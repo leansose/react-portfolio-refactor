@@ -1,53 +1,35 @@
-# Personal Portfolio — Frontend Project
+# React + TypeScript + Vite
 
-A personal portfolio website developed as the final project of the **Bytes4Future PowerUp** frontend course.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-The project presents my background, technical skills, musical experience, and development projects, with a focus on semantic HTML, reusable CSS, structured layouts, and progressive JavaScript enhancements.
+Currently, two official plugins are available:
 
-## Current Sections
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-- **Header:** Header: Introduction, profile, social links, and contact CTA.
-- **Navigation:** Navigation bar with links to sections.
-- **About Me:** Personal information.
-- **Skills:** Technical skills organized into expandable cards.
-- **Projects:** Testing and other projects showcasing technologies, tools, and methodologies.
-- **Work Experience** vertical timeline aligned with job title, company, and period
-- **Music:** Musical background, band information, photo carousel, and external links.
-- **Contact:** Contact form integrated with Web3Forms.
-- **Footer:** Social links and contact information.
+## React Compiler
 
-## Technologies
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-- HTML5
-- CSS3
-- Locally hosted fonts
-- Web3Forms for contact form submissions
+Note: This will impact Vite dev & build performances.
+You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
 
-## Current Implementation
+## Expanding the Oxlint configuration
 
-- Semantic HTML structure for page sections and content.
-- Reusable CSS classes for shared styling and layout.
-- CSS Grid and Flexbox for page and component layouts.
-- CSS custom properties for reusable values such as colors, typography, spacing, and sizing.
-- Custom locally hosted fonts using @font-face.
-- Expandable skill cards using HTML details and summary tags.
-- Native HTML form validation using input types and attributes such as required and pattern.
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
 
-## Current Javascript Implementation
-- Interactive photo carousel with thumbnail selection, previous/next navigation, and keyboard controls.
-- Dynamic main image and photo information updates based on the selected slide.
-- Back to top button displayed after scrolling past a defined threshold.
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
+```
 
-## Development Approach
-
-The project is being developed with an **HTML-first and CSS-first approach**, focusing on semantic structure, reusable styles and layout fundamentals before introducing JavaScript.
-
-JavaScript is being introduced progressively after establishing the HTML and CSS foundations, focusing on purposeful interactions rather than adding unnecessary complexity.
-
-## Next Steps
-
-- Improve responsive behavior across different screen sizes.
-- Continue refining JavaScript interactions where appropriate.
-- Review accessibility and keyboard navigation.
-- Improve layout consistency and visual polish.
-- Perform final cross-browser and usability checks.
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
