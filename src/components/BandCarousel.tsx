@@ -38,15 +38,27 @@ function BandCarousel({ photos }: BandCarouselProps) {
   return (
     <div>
       <figure>
-        <img src={photo.src} alt={photo.alt} />
-        <figcaption aria-live="polite">
-          <p>{photo.venue}</p>
-          <p>{photo.photographer}</p>
+        <img
+          src={photo.src}
+          alt={photo.alt}
+          width={photo.width}
+          height={photo.height}
+          className="mx-auto w-full max-w-[1024px] object-cover"
+        />
+        <figcaption aria-live="polite" className="mt-2">
+          <p className="meta text-ink">{photo.venue}</p>
+          <p className="meta">{photo.photographer}</p>
         </figcaption>
       </figure>
 
-      <div>
-        <button type="button" aria-label="Previous slide" disabled={active === 0} onClick={() => goTo(active - 1)}>
+      <div className="mt-4 flex items-center gap-2">
+        <button
+          type="button"
+          aria-label="Previous slide"
+          disabled={active === 0}
+          onClick={() => goTo(active - 1)}
+          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-ink/10 text-ink transition-colors hover:bg-ink/15 disabled:opacity-30"
+        >
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
             <path
               fillRule="evenodd"
@@ -55,7 +67,7 @@ function BandCarousel({ photos }: BandCarouselProps) {
           </svg>
         </button>
 
-        <ol tabIndex={0} aria-label="Band photos" onKeyDown={handleKeyDown}>
+        <ol tabIndex={0} aria-label="Band photos" onKeyDown={handleKeyDown} className="flex gap-2 overflow-x-auto">
           {photos.map((item, index) => (
             <li
               key={item.src}
@@ -68,8 +80,18 @@ function BandCarousel({ photos }: BandCarouselProps) {
                 type="button"
                 aria-label={`${item.venue} — ${item.photographer}`}
                 onClick={() => goTo(index)}
+                className={`block w-40 overflow-hidden border-2 transition-opacity ${
+                  index === active ? 'border-accent opacity-100' : 'border-rule opacity-60 hover:opacity-100'
+                }`}
               >
-                <img loading="lazy" src={item.src} alt={item.alt} />
+                <img
+                  loading="lazy"
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  className="w-full object-cover"
+                />
               </button>
             </li>
           ))}
@@ -80,6 +102,7 @@ function BandCarousel({ photos }: BandCarouselProps) {
           aria-label="Next slide"
           disabled={active === lastIndex}
           onClick={() => goTo(active + 1)}
+          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-ink/10 text-ink transition-colors hover:bg-ink/15 disabled:opacity-30"
         >
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
             <path

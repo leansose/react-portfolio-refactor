@@ -6,12 +6,14 @@ interface CertificationItemProps {
 
 function CertificationItem({ certification }: CertificationItemProps) {
   return (
-    <li>
-      <p>
+    <li className="flex flex-wrap gap-x-4 gap-y-1 border-b border-rule py-3 last:border-b-0">
+      <p className="eyebrow w-32 shrink-0 pt-1">
         <time dateTime={certification.datetime}>{certification.period}</time>
       </p>
-      <p>{certification.description}</p>
-      <p>{certification.school}</p>
+      <div className="grow">
+        <p className="prose">{certification.description}</p>
+        <p className="meta">{certification.school}</p>
+      </div>
     </li>
   );
 }

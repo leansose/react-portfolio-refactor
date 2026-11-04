@@ -6,13 +6,15 @@ interface TimelineEntryProps {
 
 function TimelineEntry({ experience }: TimelineEntryProps) {
   return (
-    <li>
+    <li className="border-b border-rule py-6">
       <article aria-labelledby={experience.id}>
-        <h3 id={experience.id}>{experience.role}</h3>
-        <p>
+        <h3 id={experience.id} className="card-title">
+          {experience.role}
+        </h3>
+        <p className="mt-1">
           {experience.company} - {experience.location}
         </p>
-        <p>
+        <p className="eyebrow mt-2">
           <time dateTime={experience.datetime}>{experience.period}</time>
         </p>
       </article>

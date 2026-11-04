@@ -8,14 +8,18 @@ export interface BandPhoto {
   alt: string;
   venue: string;
   photographer: string;
+  width: number;
+  height: number;
 }
 
 export interface MusicLink {
   href: string;
   icon: string;
   alt: string;
-  width: number;
-  height: number;
+  intrinsicWidth: number;
+  intrinsicHeight: number;
+  displayWidth: number;
+  displayHeight: number;
 }
 
 export const BAND_PHOTOS: BandPhoto[] = [
@@ -24,30 +28,40 @@ export const BAND_PHOTOS: BandPhoto[] = [
     alt: 'pre-amplifest',
     venue: '@ Post-Amplifest Session 2014',
     photographer: 'Photo by Maria do Carmo Louceiro',
+    width: 800,
+    height: 533,
   },
   {
     src: '/band/2.jpg',
     alt: 'amplifest',
     venue: '@ Amplifest 2015',
     photographer: 'Photo by Lais Pereira',
+    width: 1280,
+    height: 853,
   },
   {
     src: '/band/3.jpg',
     alt: 'amplifest',
     venue: '@ Amplifest 2015',
     photographer: 'Photo by Lais Pereira',
+    width: 2048,
+    height: 1356,
   },
   {
     src: '/band/4.jpg',
     alt: 'barracuda',
     venue: '@ Barracuda 2020',
     photographer: 'Photo by Pedro Sousa',
+    width: 5184,
+    height: 3456,
   },
   {
     src: '/band/5.jpg',
     alt: 'ferro bar',
     venue: '@ Ferro Bar 2019',
     photographer: 'Photo by David Madeira',
+    width: 5251,
+    height: 3501,
   },
 ];
 
@@ -96,21 +110,27 @@ export const MUSIC_LINKS: MusicLink[] = [
     href: 'https://jusephband.bandcamp.com/',
     icon: '/icons/bandcamp-logo.png',
     alt: 'bandcamp',
-    width: 200,
-    height: 55,
+    intrinsicWidth: 1770,
+    intrinsicHeight: 512,
+    displayWidth: 200,
+    displayHeight: 58,
   },
   {
     href: 'https://open.spotify.com/artist/7vQVtlsTukTFCInKzmi1zd?si=b15KyNgKT4CwuLTGu_UI6g',
     icon: '/icons/spotify-logo.png',
     alt: 'spotify',
-    width: 120,
-    height: 35,
+    intrinsicWidth: 3432,
+    intrinsicHeight: 940,
+    displayWidth: 120,
+    displayHeight: 33,
   },
   {
     href: 'https://www.instagram.com/jusephband/',
     icon: '/icons/ig-icon.png',
     alt: 'instagram',
-    width: 50,
-    height: 50,
+    intrinsicWidth: 100,
+    intrinsicHeight: 100,
+    displayWidth: 50,
+    displayHeight: 50,
   },
 ];
