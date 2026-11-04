@@ -28,6 +28,7 @@
 
   --gutter: clamp(16px, 5vw, 48px);
   --section-pad-block: clamp(64px, 12vh, 120px);
+  --nav-offset: 0px;
   --footer-pad-block: clamp(48px, 8vh, 80px);
   --space-stack: clamp(32px, 6vh, 48px);
   --measure-form: 560px;
@@ -114,10 +115,19 @@
 
 html {
   background-color: var(--bg);
+  /* anchors must land below the sticky bar, which only exists from md up */
+  scroll-padding-block-start: var(--nav-offset);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nav-offset: 84px;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   html {
+    scroll-behavior: smooth;
     transition:
       background-color var(--duration-fast) var(--ease-out),
       color var(--duration-fast) var(--ease-out);

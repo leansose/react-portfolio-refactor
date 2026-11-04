@@ -88,6 +88,16 @@
     transform: translateY(1px);
   }
 
+  .btn-outline {
+    border-color: var(--ink-faint);
+    color: var(--ink);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--ink-muted);
+    background-color: var(--surface-hover);
+  }
+
   .btn-icon {
     inline-size: 44px;
     min-block-size: 0;
@@ -137,6 +147,21 @@
   }
 
   /* ---- navigation links ----------------------------------------------- */
+
+  /* The bar is sticky only from md up, where it is one line tall; on mobile
+     the wrapped links would otherwise pin a quarter of the viewport. */
+  .nav-bar {
+    background-color: var(--bg);
+  }
+
+  @media (min-width: 768px) {
+    .nav-bar {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 40;
+      border-block-end: 1px solid var(--rule);
+    }
+  }
 
   .nav-link {
     display: inline-block;
