@@ -1,0 +1,106 @@
+:root {
+  color-scheme: light;
+
+  --bg: #f7f8f6;
+  --bg-raised: #ffffff;
+  --ink: #15171a;
+  --ink-muted: #4a4f57;
+  --ink-faint: #656b74;
+  --accent: #177f4b;
+  --accent-hover: #0f6a3d;
+  --on-accent: #ffffff;
+  --rule: #c6cbd1;
+  --danger: #b3261e;
+
+  --font-display: 'Josefin Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
+
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 80px;
+  --space-2xl: 120px;
+
+  --container: min(1200px, 100% - 2 * clamp(16px, 5vw, 48px));
+
+  --ease-out: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --duration-fast: 150ms;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #191a1e;
+  --bg-raised: #22242a;
+  --ink: rgba(255, 255, 255, 0.92);
+  --ink-muted: rgba(255, 255, 255, 0.65);
+  --ink-faint: rgba(255, 255, 255, 0.5);
+  --accent: #9ee8be;
+  --accent-hover: #63c68f;
+  --on-accent: #101215;
+  --rule: rgba(255, 255, 255, 0.15);
+  --danger: #ff809d;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/JosefinSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/JosefinSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Inter_24pt-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Inter_24pt-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Inter_24pt-Bold.ttf') format('truetype');
+}
+
+html {
+  background-color: var(--bg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out);
+  }
+}

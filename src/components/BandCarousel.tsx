@@ -64,11 +64,13 @@ function BandCarousel({ photos }: BandCarouselProps) {
               }}
               aria-current={index === active ? 'true' : undefined}
             >
-              <button type="button" aria-label={`Show photo: ${item.venue}`} onClick={() => goTo(index)}>
+              <button
+                type="button"
+                aria-label={`${item.venue} — ${item.photographer}`}
+                onClick={() => goTo(index)}
+              >
                 <img loading="lazy" src={item.src} alt={item.alt} />
               </button>
-              <p>{item.venue}</p>
-              <p>{item.photographer}</p>
             </li>
           ))}
         </ol>

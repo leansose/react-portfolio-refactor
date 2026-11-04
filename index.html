@@ -5,6 +5,19 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>react-portfolio-refactor</title>
+    <script>
+      (() => {
+        const dark = '(prefers-color-scheme: dark)';
+        let preference = 'system';
+        try {
+          const stored = localStorage.getItem('portfolio-theme');
+          if (stored === 'light' || stored === 'dark') preference = stored;
+        } catch (error) {}
+        const theme = preference === 'system' ? (matchMedia(dark).matches ? 'dark' : 'light') : preference;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.themePreference = preference;
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
