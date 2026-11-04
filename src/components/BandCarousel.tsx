@@ -47,6 +47,9 @@ function BandCarousel({ photos }: BandCarouselProps) {
           <img
             key={photo.src}
             src={photo.src}
+            srcSet={photo.srcSet}
+            sizes="(min-width: 1024px) 1024px, 100vw"
+            decoding="async"
             alt={photo.alt}
             width={photo.width}
             height={photo.height}

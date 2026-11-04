@@ -5,6 +5,7 @@ export interface Segment {
 
 export interface BandPhoto {
   src: string;
+  srcSet: string;
   alt: string;
   venue: string;
   photographer: string;
@@ -22,47 +23,38 @@ export interface MusicLink {
   displayHeight: number;
 }
 
+const photo = (
+  file: string,
+  alt: string,
+  venue: string,
+  photographer: string,
+  width: number,
+  height: number,
+  large: string,
+): BandPhoto => ({
+  src: `/band/${file}-640.jpg`,
+  srcSet: `/band/${file}-640.jpg 640w, ${large}`,
+  alt,
+  venue,
+  photographer,
+  width,
+  height,
+});
+
 export const BAND_PHOTOS: BandPhoto[] = [
-  {
-    src: '/band/1.jpg',
-    alt: 'pre-amplifest',
-    venue: '@ Post-Amplifest Session 2014',
-    photographer: 'Photo by Maria do Carmo Louceiro',
-    width: 800,
-    height: 533,
-  },
-  {
-    src: '/band/2.jpg',
-    alt: 'amplifest',
-    venue: '@ Amplifest 2015',
-    photographer: 'Photo by Lais Pereira',
-    width: 1280,
-    height: 853,
-  },
-  {
-    src: '/band/3.jpg',
-    alt: 'amplifest',
-    venue: '@ Amplifest 2015',
-    photographer: 'Photo by Lais Pereira',
-    width: 2048,
-    height: 1356,
-  },
-  {
-    src: '/band/4.jpg',
-    alt: 'barracuda',
-    venue: '@ Barracuda 2020',
-    photographer: 'Photo by Pedro Sousa',
-    width: 5184,
-    height: 3456,
-  },
-  {
-    src: '/band/5.jpg',
-    alt: 'ferro bar',
-    venue: '@ Ferro Bar 2019',
-    photographer: 'Photo by David Madeira',
-    width: 5251,
-    height: 3501,
-  },
+  photo(
+    '1',
+    'pre-amplifest',
+    '@ Post-Amplifest Session 2014',
+    'Photo by Maria do Carmo Louceiro',
+    800,
+    533,
+    '/band/1.jpg 800w',
+  ),
+  photo('2', 'amplifest', '@ Amplifest 2015', 'Photo by Lais Pereira', 1280, 853, '/band/2.jpg 1280w'),
+  photo('3', 'amplifest', '@ Amplifest 2015', 'Photo by Lais Pereira', 2048, 1356, '/band/3-1600.jpg 1600w'),
+  photo('4', 'barracuda', '@ Barracuda 2020', 'Photo by Pedro Sousa', 5184, 3456, '/band/4-1600.jpg 1600w'),
+  photo('5', 'ferro bar', '@ Ferro Bar 2019', 'Photo by David Madeira', 5251, 3501, '/band/5-1600.jpg 1600w'),
 ];
 
 const seg = (text: string, em?: boolean): Segment => ({ text, em });
