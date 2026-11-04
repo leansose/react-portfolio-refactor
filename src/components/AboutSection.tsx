@@ -2,11 +2,7 @@ import { ABOUT_PARAGRAPHS } from '../data/aboutContent';
 
 function AboutSection() {
   return (
-    <section
-      id="about"
-      aria-labelledby="about-heading"
-      className="mx-auto w-full max-w-[1200px] px-[clamp(16px,5vw,48px)] py-[clamp(64px,12vh,120px)]"
-    >
+    <section id="about" aria-labelledby="about-heading" className="section">
       <h2 id="about-heading" className="section-title text-accent">
         About Me
       </h2>

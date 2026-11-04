@@ -4,8 +4,7 @@ interface TextFieldProps {
   field: ContactField;
 }
 
-const INPUT_CLASS =
-  'mt-1 w-full rounded border border-rule bg-bg-raised px-3 py-2 text-base text-ink placeholder:text-ink-faint';
+const INPUT_CLASS = 'field mt-1';
 
 function TextField({ field }: TextFieldProps) {
   const id = field.name;

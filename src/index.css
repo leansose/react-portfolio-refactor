@@ -1,5 +1,6 @@
 @import './styles/tokens.css';
 @import 'tailwindcss';
+@import './styles/components.css';
 
 @theme inline {
   --color-bg: var(--bg);
@@ -33,12 +34,15 @@
 
   a {
     color: var(--accent);
+    text-decoration-line: none;
     text-decoration-color: var(--rule);
     text-underline-offset: 3px;
   }
 
   a:hover {
     color: var(--accent-hover);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
     text-decoration-color: currentColor;
   }
 

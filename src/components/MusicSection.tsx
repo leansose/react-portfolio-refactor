@@ -4,11 +4,7 @@ import { BAND_PHOTOS, MUSIC_DESCRIPTION, MUSIC_LINKS } from '../data/music';
 
 function MusicSection() {
   return (
-    <section
-      id="music"
-      aria-labelledby="music-heading"
-      className="mx-auto w-full max-w-[1200px] px-[clamp(16px,5vw,48px)] py-[clamp(64px,12vh,120px)]"
-    >
+    <section id="music" aria-labelledby="music-heading" className="section">
       <h2 id="music-heading" className="section-title text-accent">
         Music
       </h2>

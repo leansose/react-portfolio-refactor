@@ -17,7 +17,7 @@ function BackToTop() {
       href="#top"
       aria-label="back to top"
       tabIndex={visible ? 0 : -1}
-      className={`fixed bottom-6 right-6 z-10 size-12 rounded-full bg-accent p-2 transition-opacity duration-200 hover:bg-accent-hover ${
+      className={`btn btn-primary fixed bottom-6 right-6 z-10 size-12 p-2 transition-opacity duration-200 max-md:hidden ${
         visible ? 'opacity-100' : 'pointer-events-none opacity-0'
       }`}
     >

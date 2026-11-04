@@ -3,11 +3,7 @@ import { CONTACT_FIELDS, CONTACT_FORM } from '../data/contact';
 
 function ContactSection() {
   return (
-    <section
-      id="contact"
-      aria-labelledby="contact-heading"
-      className="mx-auto w-full max-w-[1200px] px-[clamp(16px,5vw,48px)] py-[clamp(64px,12vh,120px)]"
-    >
+    <section id="contact" aria-labelledby="contact-heading" className="section">
       <h2 id="contact-heading" className="section-title text-accent">
         Get in Touch
       </h2>
@@ -30,10 +26,7 @@ function ContactSection() {
           ))}
         </div>
 
-        <button
-          type="submit"
-          className="mt-6 rounded-full bg-accent px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.08em] text-on-accent transition-colors hover:bg-accent-hover"
-        >
+        <button type="submit" className="btn btn-primary mt-6">
           Send Message
         </button>
       </form>

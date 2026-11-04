@@ -3,10 +3,7 @@ import { HERO_SOCIAL_LINKS, PROFILE } from '../data/profile';
 
 function Hero() {
   return (
-    <header
-      id="top"
-      className="mx-auto w-full max-w-[1200px] px-[clamp(16px,5vw,48px)] py-[clamp(64px,12vh,120px)]"
-    >
+    <header id="top" className="section">
       <h1 className="hero-title">{PROFILE.title}</h1>
       <p className="lead measure mt-4">{PROFILE.tagline}</p>
       <div className="mt-8">

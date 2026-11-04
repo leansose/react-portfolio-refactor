@@ -17,9 +17,7 @@ function ThemeToggle() {
           key={option.value}
           type="button"
           aria-pressed={preference === option.value}
-          className={`rounded-full px-3 py-1 font-mono text-xs uppercase tracking-[0.08em] transition-colors hover:bg-ink/10 ${
-            preference === option.value ? 'bg-ink/10 text-ink' : 'text-ink-muted'
-          }`}
+          className="btn btn-chip"
           onClick={() => setPreference(option.value)}
         >
           {option.label}

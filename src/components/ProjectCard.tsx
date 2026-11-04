@@ -10,29 +10,26 @@ function ProjectCard({ project, index }: ProjectCardProps) {
   const number = String(index + 1).padStart(2, '0');
 
   return (
-    <details className="group px-1 py-4">
-      <summary className="flex cursor-pointer list-none flex-wrap items-baseline gap-x-4 gap-y-2 [&::-webkit-details-marker]:hidden">
+    <details className="row group">
+      <summary>
         <span aria-hidden="true" className="eyebrow tabular-nums">
           {number}
         </span>
         <span className="eyebrow">{type}</span>
-        <h3 className="card-title grow text-ink group-open:text-accent">{title}</h3>
+        <h3 className="card-title row-title grow">{title}</h3>
         <ul role="list" aria-label="Project focus areas" className="flex flex-wrap gap-2">
           {keywords.map((keyword) => (
-            <li
-              key={keyword}
-              className="border border-rule px-2 py-0.5 font-mono text-xs uppercase tracking-[0.08em] text-ink-muted"
-            >
+            <li key={keyword} className="tag">
               {keyword}
             </li>
           ))}
         </ul>
-        <span aria-hidden="true" className="font-mono text-ink-faint transition-transform group-open:rotate-45">
+        <span aria-hidden="true" className="row-marker">
           +
         </span>
       </summary>
 
-      <div className="mt-4 border-l-2 border-accent pl-4">
+      <div className="row-body mt-4">
         {description.map((paragraph, paragraphIndex) => (
           <p key={paragraphIndex} className="prose measure text-ink-muted">
             {paragraph}

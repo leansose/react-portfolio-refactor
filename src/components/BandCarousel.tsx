@@ -16,7 +16,12 @@ function BandCarousel({ photos }: BandCarouselProps) {
     if (clamped === active) return;
 
     setActive(clamped);
-    slidesRef.current[clamped]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    slidesRef.current[clamped]?.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    });
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLOListElement>) => {
@@ -38,16 +43,23 @@ function BandCarousel({ photos }: BandCarouselProps) {
   return (
     <div>
       <figure>
-        <img
-          src={photo.src}
-          alt={photo.alt}
-          width={photo.width}
-          height={photo.height}
-          className="mx-auto w-full max-w-[1024px] object-cover"
-        />
-        <figcaption aria-live="polite" className="mt-2">
+        <div className="media-frame">
+          <img
+            key={photo.src}
+            src={photo.src}
+            alt={photo.alt}
+            width={photo.width}
+            height={photo.height}
+            className="mx-auto w-full max-w-[1024px] object-cover"
+          />
+        </div>
+
+        <figcaption aria-live="polite" className="mt-2 flex flex-wrap items-baseline gap-x-4">
           <p className="meta text-ink">{photo.venue}</p>
           <p className="meta">{photo.photographer}</p>
+          <p className="eyebrow ms-auto tabular-nums">
+            {String(active + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}
+          </p>
         </figcaption>
       </figure>
 
@@ -57,7 +69,7 @@ function BandCarousel({ photos }: BandCarouselProps) {
           aria-label="Previous slide"
           disabled={active === 0}
           onClick={() => goTo(active - 1)}
-          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-ink/10 text-ink transition-colors hover:bg-ink/15 disabled:opacity-30"
+          className="btn btn-icon"
         >
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
             <path
@@ -67,7 +79,7 @@ function BandCarousel({ photos }: BandCarouselProps) {
           </svg>
         </button>
 
-        <ol tabIndex={0} aria-label="Band photos" onKeyDown={handleKeyDown} className="flex gap-2 overflow-x-auto">
+        <ol tabIndex={0} aria-label="Band photos" onKeyDown={handleKeyDown} className="carousel-rail">
           {photos.map((item, index) => (
             <li
               key={item.src}
@@ -79,10 +91,9 @@ function BandCarousel({ photos }: BandCarouselProps) {
               <button
                 type="button"
                 aria-label={`${item.venue} — ${item.photographer}`}
+                data-active={index === active}
                 onClick={() => goTo(index)}
-                className={`block w-40 overflow-hidden border-2 transition-opacity ${
-                  index === active ? 'border-accent opacity-100' : 'border-rule opacity-60 hover:opacity-100'
-                }`}
+                className="thumb w-40"
               >
                 <img
                   loading="lazy"
@@ -102,7 +113,7 @@ function BandCarousel({ photos }: BandCarouselProps) {
           aria-label="Next slide"
           disabled={active === lastIndex}
           onClick={() => goTo(active + 1)}
-          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-ink/10 text-ink transition-colors hover:bg-ink/15 disabled:opacity-30"
+          className="btn btn-icon"
         >
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
             <path

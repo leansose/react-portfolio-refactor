@@ -3,11 +3,7 @@ import { PROJECTS } from '../data/projects';
 
 function ProjectsSection() {
   return (
-    <section
-      id="projects"
-      aria-labelledby="projects-heading"
-      className="mx-auto w-full max-w-[1200px] px-[clamp(16px,5vw,48px)] py-[clamp(64px,12vh,120px)]"
-    >
+    <section id="projects" aria-labelledby="projects-heading" className="section">
       <h2 id="projects-heading" className="section-title text-accent">
         Projects
       </h2>
@@ -16,9 +12,9 @@ function ProjectsSection() {
         testing, and frontend development. Explore the projects on GitHub.
       </p>
 
-      <ol className="mt-[clamp(32px,6vh,48px)] border-t border-rule">
+      <ol role="list" className="row-list">
         {PROJECTS.map((project, index) => (
-          <li key={project.repoUrl} className="border-b border-rule">
+          <li key={project.repoUrl}>
             <ProjectCard project={project} index={index} />
           </li>
         ))}
