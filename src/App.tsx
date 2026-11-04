@@ -6,6 +6,9 @@ import ProjectsSection from './components/ProjectsSection';
 import EducationSection from './components/EducationSection';
 import CertificationsSection from './components/CertificationsSection';
 import ExperienceSection from './components/ExperienceSection';
+import MusicSection from './components/MusicSection';
+import ContactSection from './components/ContactSection';
+import BackToTop from './components/BackToTop';
 import Footer from './components/Footer';
 
 function App() {
@@ -20,8 +23,10 @@ function App() {
         <EducationSection />
         <CertificationsSection />
         <ExperienceSection />
+        <MusicSection />
+        <ContactSection />
       </main>
-      <a href="#top">Back to top</a>
+      <BackToTop />
       <Footer />
     </>
   );
