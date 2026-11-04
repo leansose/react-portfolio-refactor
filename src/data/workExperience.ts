@@ -9,9 +9,9 @@ export interface WorkExperience {
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
-    id: 'betatesing-freelance',
+    id: 'betatesting-freelance',
     role: 'Freelance Software Tester',
-    company: 'BetaTesing',
+    company: 'BetaTesting',
     location: 'Remote',
     period: 'Feb 2026 - Present',
     datetime: '2026-02/',

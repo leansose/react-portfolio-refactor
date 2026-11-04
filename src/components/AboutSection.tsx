@@ -3,10 +3,12 @@ import { ABOUT_PARAGRAPHS } from '../data/aboutContent';
 function AboutSection() {
   return (
     <section id="about" aria-labelledby="about-heading" className="section">
-      <h2 id="about-heading" className="section-title text-accent">
-        About Me
-      </h2>
-      <div className="mt-4 space-y-4">
+      <div className="section-head">
+        <h2 id="about-heading" className="section-title">
+          About Me
+        </h2>
+      </div>
+      <div className="section-body stack">
         {ABOUT_PARAGRAPHS.map((lines, index) => (
           <p key={index} className="prose measure">
             {lines.map((line, lineIndex) => (

@@ -14,6 +14,39 @@
     padding-block: var(--section-pad-block);
   }
 
+  /* ---- section anatomy -------------------------------------------------
+     Head is eyebrow + title + lead; body is whatever follows them. */
+
+  .section-head > * + * {
+    margin-block-start: var(--space-sm);
+  }
+
+  .section-head > .eyebrow + * {
+    margin-block-start: var(--space-2xs);
+  }
+
+  .section-body {
+    margin-block-start: var(--space-stack);
+  }
+
+  .stack > * + * {
+    margin-block-start: var(--space-sm);
+  }
+
+  /* dense two-column rows inside a card, e.g. a certification list */
+  .sub-list > li {
+    padding-block: var(--space-xs);
+  }
+
+  .sub-list > li + li {
+    border-block-start: 1px solid var(--rule);
+  }
+
+  .footer {
+    padding-block: var(--footer-pad-block);
+    border-block-start: 1px solid var(--rule);
+  }
+
   /* ---- buttons --------------------------------------------------------
      .btn keeps a 44px block so every primary control clears WCAG 2.5.5;
      chips are the documented exception (they stay above the 24px AA floor). */
@@ -149,10 +182,25 @@
     outline-offset: 2px;
   }
 
+  /* wide logo lockups (Bandcamp, Spotify) sit in a padded hover surface
+     instead of the opacity hack the old stylesheet used */
+  .logo-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+    padding-inline: var(--space-xs);
+    border-radius: var(--radius-md);
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .logo-link:hover {
+    background-color: var(--surface-hover);
+  }
+
   /* ---- accordion card rows -------------------------------------------- */
 
   .row-list {
-    margin-block-start: clamp(32px, 6vh, 48px);
+    margin-block-start: var(--space-stack);
     border-block-start: 1px solid var(--rule);
   }
 

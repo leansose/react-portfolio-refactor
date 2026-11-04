@@ -28,6 +28,9 @@
 
   --gutter: clamp(16px, 5vw, 48px);
   --section-pad-block: clamp(64px, 12vh, 120px);
+  --footer-pad-block: clamp(48px, 8vh, 80px);
+  --space-stack: clamp(32px, 6vh, 48px);
+  --measure-form: 560px;
 
   --radius-sm: 3px;
   --radius-md: 6px;

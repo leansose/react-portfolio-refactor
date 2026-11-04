@@ -11,7 +11,7 @@ function CertificationCard({ group }: CertificationCardProps) {
       <h3 id={group.id} className="card-title">
         {group.category}
       </h3>
-      <ul className="mt-4">
+      <ul role="list" className="sub-list section-body">
         {group.items.map((certification, index) => (
           <CertificationItem key={`${certification.datetime}-${index}`} certification={certification} />
         ))}

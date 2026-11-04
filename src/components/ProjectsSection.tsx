@@ -4,13 +4,15 @@ import { PROJECTS } from '../data/projects';
 function ProjectsSection() {
   return (
     <section id="projects" aria-labelledby="projects-heading" className="section">
-      <h2 id="projects-heading" className="section-title text-accent">
-        Projects
-      </h2>
-      <p className="lead measure mt-4">
-        A selection of QA and software development projects covering manual testing, automation, API testing, AI-driven
-        testing, and frontend development. Explore the projects on GitHub.
-      </p>
+      <div className="section-head">
+        <h2 id="projects-heading" className="section-title">
+          Projects
+        </h2>
+        <p className="lead measure">
+          A selection of QA and software development projects covering manual testing, automation, API testing,
+          AI-driven testing, and frontend development. Explore the projects on GitHub.
+        </p>
+      </div>
 
       <ol role="list" className="row-list">
         {PROJECTS.map((project, index) => (
