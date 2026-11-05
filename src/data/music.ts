@@ -72,7 +72,7 @@ export const MUSIC_DESCRIPTION: Segment[][] = [
     seg(' (2013) and '),
     seg('Óreida', true),
     seg(
-      ` — and played
+      ` (2019) — and played
       numerous live shows across the country, including the legendary music festival
       Amplifest in its 2015 edition.`,
     ),
@@ -90,7 +90,7 @@ export const MUSIC_DESCRIPTION: Segment[][] = [
       `Today I'm challenging myself to play exploratory music, since I'm deeply into
       electronic music, effects and synthesizers. I'm trying to find a balance between the two,
       possibly a mix of both, my grounded area, post-rock, and ambient music, using an alter ego
-      called,`,
+      called `,
     ),
     seg('Sir Sun', true),
     seg('.'),

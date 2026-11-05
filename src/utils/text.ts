@@ -1,4 +1,5 @@
-const collapseIndentation = (text: string) => text.replace(/[ \t]*\n[ \t]*/g, '\n').trim();
+/** Keeps edge spaces: RichText segments use them as the joiner to the neighbouring segment. */
+const collapseIndentation = (text: string) => text.replace(/[ \t]*\n[ \t]*/g, '\n');
 
 /** Collapses source-code indentation while preserving intentional blank-line paragraph breaks. */
 export const normalizeText = (text: string) =>
