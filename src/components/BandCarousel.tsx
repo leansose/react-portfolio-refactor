@@ -39,6 +39,10 @@ function BandCarousel({ photos }: BandCarouselProps) {
   };
 
   const photo = photos[active];
+  /* An empty list is also an empty carousel: lastIndex would go negative, both
+     arrows would sit disabled under an aria-label, and there would be no
+     caption to announce. Nothing to draw is the honest reading. */
+  if (!photo) return null;
 
   return (
     <div>
