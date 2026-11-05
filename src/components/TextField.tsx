@@ -18,6 +18,7 @@ function TextField({ field }: TextFieldProps) {
         <textarea
           id={id}
           name={field.name}
+          autoComplete={field.autocomplete}
           placeholder={field.placeholder}
           maxLength={field.maxLength}
           required={field.required}
@@ -29,6 +30,7 @@ function TextField({ field }: TextFieldProps) {
           id={id}
           name={field.name}
           type={field.type}
+          autoComplete={field.autocomplete}
           placeholder={field.placeholder}
           minLength={field.minLength}
           maxLength={field.maxLength}

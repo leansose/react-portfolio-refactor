@@ -2,6 +2,7 @@ export interface ContactField {
   label: string;
   name: string;
   type?: string;
+  autocomplete?: string;
   placeholder?: string;
   required?: boolean;
   minLength?: number;
@@ -23,16 +24,25 @@ export const CONTACT_FIELDS: ContactField[] = [
     label: 'Name',
     name: 'name',
     type: 'text',
+    autocomplete: 'name',
     placeholder: 'Your name',
     minLength: 2,
     maxLength: 30,
     required: true,
   },
-  { label: 'Email', name: 'email', type: 'email', placeholder: 'Your email', required: true },
+  {
+    label: 'Email',
+    name: 'email',
+    type: 'email',
+    autocomplete: 'email',
+    placeholder: 'Your email',
+    required: true,
+  },
   {
     label: 'Phone',
     name: 'phone',
     type: 'tel',
+    autocomplete: 'tel',
     placeholder: 'e.g. 9123456789',
     title: 'Please enter a 9-digit phone number.',
     pattern: '[0-9]{9}',
