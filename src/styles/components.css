@@ -234,6 +234,20 @@
      The glyph keeps its historic size while the anchor grows to a 44px
      target, so hero and footer socials are comfortable on touch. */
 
+  .glyph {
+    display: inline-block;
+    background-color: var(--ink);
+    -webkit-mask: var(--glyph) no-repeat center / contain;
+    mask: var(--glyph) no-repeat center / contain;
+  }
+
+  /* for a glyph that sits on a filled control, the control's own ink is the
+     right colour, and --on-accent is what that control already writes its
+     label in */
+  .glyph-on-accent {
+    background-color: var(--on-accent);
+  }
+
   .icon-link {
     display: inline-flex;
     align-items: center;

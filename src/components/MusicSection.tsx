@@ -1,4 +1,5 @@
 import BandCarousel from './BandCarousel';
+import Glyph from './Glyph';
 import RichText from './RichText';
 import { BAND_PHOTOS, MUSIC_DESCRIPTION, MUSIC_LINKS } from '../data/music';
 
@@ -30,12 +31,10 @@ function MusicSection() {
         {MUSIC_LINKS.map((link) => (
           <li key={link.href}>
             <a href={link.href} target="_blank" rel="noopener noreferrer" className="logo-link">
-              <img
+              <Glyph
                 src={link.icon}
                 alt={link.alt}
-                width={link.displayWidth}
-                height={link.displayHeight}
-                className="object-contain"
+                style={{ inlineSize: link.displayWidth, blockSize: link.displayHeight }}
               />
             </a>
           </li>

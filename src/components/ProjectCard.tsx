@@ -1,3 +1,4 @@
+import Glyph from './Glyph';
 import type { Project } from '../data/projects';
 import { publicUrl } from '../utils/url';
 
@@ -52,14 +53,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           rel="noopener noreferrer"
           className="mt-4 inline-flex items-center gap-2 font-mono text-sm"
         >
-          <img
-            src={publicUrl('icons/github-icon.png')}
-            alt=""
-            aria-hidden="true"
-            width={90}
-            height={90}
-            className="size-4"
-          />
+          <Glyph src={publicUrl('icons/github-icon.png')} alt="" className="size-4" />
           <span>View project on GitHub</span>
         </a>
       </div>

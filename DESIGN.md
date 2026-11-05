@@ -298,6 +298,11 @@ non-text contrast the field boundary needs.
   softened ink and fills with the 6% surface wash. Same 44px target.
 - **Icon:** 44×44 pill on the 6% surface wash, no label; hover deepens the wash to 11%, active
   translates 1px. Used for compact glyph targets.
+- **Glyph:** the brand marks and the back-to-top arrow arrive as flat single-colour bitmaps, so their
+  own pixels can never serve both themes. Each is masked (`mask: var(--glyph) center / contain`) and
+  painted from a token instead: `--ink` for marks that sit on the page surface, `--on-accent` for the
+  one that sits on a filled button. Light mode gets dark marks, dark mode gets light ones, and the
+  artwork is untouched.
 - **Chip:** the theme switcher's three-way control. 34px tall on a fine pointer, 8px inline padding,
   monospace 0.6875rem in softened ink on a transparent fill. Pressed state (`aria-pressed='true'`) takes
   the Pass Green fill. Chips are the documented exception to the 44px rule and stay above the 24px AA

@@ -4,8 +4,6 @@ export interface SocialLink {
   href: string;
   icon: string;
   alt: string;
-  width: number;
-  height: number;
 }
 
 export const PROFILE = {
@@ -19,15 +17,11 @@ export const HERO_SOCIAL_LINKS: SocialLink[] = [
     href: 'https://www.linkedin.com/in/leandrosousabastos',
     icon: publicUrl('icons/linkedin-icon.png'),
     alt: 'LinkedIn',
-    width: 96,
-    height: 96,
   },
   {
     href: 'https://github.com/leansose',
     icon: publicUrl('icons/github-icon.png'),
     alt: 'GitHub',
-    width: 90,
-    height: 90,
   },
 ];
 
@@ -36,22 +30,16 @@ export const FOOTER_SOCIAL_LINKS: SocialLink[] = [
     href: 'https://www.linkedin.com/in/leandrosousabastos',
     icon: publicUrl('icons/linkedin-icon.png'),
     alt: 'LinkedIn',
-    width: 96,
-    height: 96,
   },
   {
     href: 'https://instagram.com/leansose/',
     icon: publicUrl('icons/ig-icon.png'),
     alt: 'Instagram',
-    width: 100,
-    height: 100,
   },
   {
     href: 'https://github.com/leansose',
     icon: publicUrl('icons/github-icon.png'),
     alt: 'GitHub',
-    width: 90,
-    height: 90,
   },
 ];
 

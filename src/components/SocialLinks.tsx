@@ -1,3 +1,4 @@
+import Glyph from './Glyph';
 import type { SocialLink } from '../data/profile';
 
 interface SocialLinksProps {
@@ -17,13 +18,7 @@ function SocialLinks({ links, ariaLabel, size = 45 }: SocialLinksProps) {
       {links.map((link) => (
         <li key={link.href}>
           <a href={link.href} target="_blank" rel="noopener noreferrer" className="icon-link">
-            <img
-              src={link.icon}
-              alt={link.alt}
-              width={link.width}
-              height={link.height}
-              className={`object-contain ${SIZES[size]}`}
-            />
+            <Glyph src={link.icon} alt={link.alt} className={SIZES[size]} />
           </a>
         </li>
       ))}
