@@ -180,11 +180,16 @@ value.
 ## Typography
 
 **Display Font:** Josefin Sans (fallback `ui-sans-serif, system-ui, sans-serif`), self-hosted at
-400 / 600 / 700 from `public/fonts/`.
+400 / 600 / 700 from `public/fonts/`, each with a drawn italic companion.
 **Body Font:** Inter 24pt (fallback `ui-sans-serif, system-ui, sans-serif`), self-hosted at 400 /
-500 / 700.
+500 / 700, each with a drawn italic companion.
 **Label/Mono Font:** the platform monospace stack (`ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo,
 monospace`) — deliberately not a downloaded face; it is a utility voice.
+
+**Italic:** `<em>` is the identity's only emphasis, used for album and band titles in the prose. The
+twelve faces are the same builds as their uprights — Inter 4.001, Josefin Sans 2.001 — so the slant
+is drawn, not sheared by the browser: real italics carry different advance widths and entry strokes,
+and a paragraph mixing upright and emphasis keeps its rhythm.
 
 **Character:** Josefin Sans is a tall, narrow, geometric display face whose uppercase forms the
 headline as a printed classification rather than as expressive type. Inter carries everything meant

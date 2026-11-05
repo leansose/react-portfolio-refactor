@@ -89,6 +89,33 @@
   src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
 }
 
+/* The italics are the same builds as the uprights above — Josefin Sans 2.001,
+   Inter 4.001 — so an <em> is a drawn italic rather than one the browser
+   shears out of the upright. */
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/JosefinSans-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/JosefinSans-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/JosefinSans-BoldItalic.ttf') format('truetype');
+}
+
 @font-face {
   font-family: 'Inter';
   font-style: normal;
@@ -111,6 +138,30 @@
   font-weight: 700;
   font-display: swap;
   src: url('/fonts/Inter_24pt-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Inter_24pt-RegularItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Inter_24pt-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Inter_24pt-BoldItalic.ttf') format('truetype');
 }
 
 html {
