@@ -1,44 +1,59 @@
-import type { ContactField } from '../data/contact';
+import type { UseFormRegister } from 'react-hook-form';
+import type { ContactField, ContactValues } from '../data/contact';
 
 interface TextFieldProps {
   field: ContactField;
+  register: UseFormRegister<ContactValues>;
+  error?: string;
 }
 
 const INPUT_CLASS = 'field mt-1';
 
-function TextField({ field }: TextFieldProps) {
-  const id = field.name;
+function TextField({ field, register, error }: TextFieldProps) {
+  const hintId = `${field.name}-hint`;
+  const errorId = `${field.name}-error`;
+  const showHint = Boolean(field.hint) && !error;
+  const describedBy = [showHint ? hintId : null, error ? errorId : null].filter(Boolean).join(' ');
 
   return (
     <p>
-      <label htmlFor={id} className="eyebrow block">
+      <label htmlFor={field.name} className="eyebrow block">
         {field.label}
       </label>
       {field.multiline ? (
         <textarea
-          id={id}
-          name={field.name}
-          autoComplete={field.autocomplete}
-          placeholder={field.placeholder}
-          maxLength={field.maxLength}
-          required={field.required}
+          id={field.name}
           rows={5}
           className={INPUT_CLASS}
+          placeholder={field.placeholder}
+          maxLength={field.maxLength}
+          autoComplete={field.autocomplete}
+          aria-invalid={Boolean(error)}
+          aria-describedby={describedBy || undefined}
+          {...register(field.name)}
         />
       ) : (
         <input
-          id={id}
-          name={field.name}
+          id={field.name}
           type={field.type}
-          autoComplete={field.autocomplete}
-          placeholder={field.placeholder}
-          minLength={field.minLength}
-          maxLength={field.maxLength}
-          pattern={field.pattern}
-          title={field.title}
-          required={field.required}
           className={INPUT_CLASS}
+          placeholder={field.placeholder}
+          maxLength={field.maxLength}
+          autoComplete={field.autocomplete}
+          aria-invalid={Boolean(error)}
+          aria-describedby={describedBy || undefined}
+          {...register(field.name)}
         />
+      )}
+      {showHint && (
+        <span id={hintId} className="field-hint">
+          {field.hint}
+        </span>
+      )}
+      {error && (
+        <span id={errorId} className="field-error">
+          {error}
+        </span>
       )}
     </p>
   );

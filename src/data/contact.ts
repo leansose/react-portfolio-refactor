@@ -1,15 +1,27 @@
+import { z } from 'zod';
+
+export const contactSchema = z.object({
+  name: z.string().trim().min(2, 'Enter your name').max(30, 'Keep the name under 30 characters'),
+  email: z.string().trim().email('Enter a valid email address'),
+  phone: z.string().trim().regex(/^[0-9]{9}$/, 'Enter the 9 digits, no spaces or country code'),
+  message: z
+    .string()
+    .trim()
+    .min(1, 'Write a message')
+    .max(500, 'Keep the message under 500 characters'),
+});
+
+export type ContactValues = z.infer<typeof contactSchema>;
+
 export interface ContactField {
   label: string;
-  name: string;
+  name: keyof ContactValues;
   type?: string;
   autocomplete?: string;
   placeholder?: string;
-  required?: boolean;
-  minLength?: number;
   maxLength?: number;
-  pattern?: string;
-  title?: string;
   multiline?: boolean;
+  hint?: string;
 }
 
 export const CONTACT_FORM = {
@@ -26,9 +38,7 @@ export const CONTACT_FIELDS: ContactField[] = [
     type: 'text',
     autocomplete: 'name',
     placeholder: 'Your name',
-    minLength: 2,
     maxLength: 30,
-    required: true,
   },
   {
     label: 'Email',
@@ -36,7 +46,6 @@ export const CONTACT_FIELDS: ContactField[] = [
     type: 'email',
     autocomplete: 'email',
     placeholder: 'Your email',
-    required: true,
   },
   {
     label: 'Phone',
@@ -44,9 +53,14 @@ export const CONTACT_FIELDS: ContactField[] = [
     type: 'tel',
     autocomplete: 'tel',
     placeholder: 'e.g. 9123456789',
-    title: 'Please enter a 9-digit phone number.',
-    pattern: '[0-9]{9}',
-    required: true,
+    hint: 'Nine digits, no spaces or country code.',
+    maxLength: 9,
   },
-  { label: 'Message', name: 'message', placeholder: 'Your message', maxLength: 500, multiline: true, required: true },
+  {
+    label: 'Message',
+    name: 'message',
+    placeholder: 'Your message',
+    maxLength: 500,
+    multiline: true,
+  },
 ];

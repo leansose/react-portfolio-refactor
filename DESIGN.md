@@ -316,8 +316,15 @@ non-text contrast the field boundary needs.
   ink text with faint-ink placeholders. Hover darkens the border to faint ink.
 - **Focus:** border becomes Pass Green and a 3px translucent halo appears (`--surface-pressed`) —
   the only place a shadow-like value is used.
-- **Error:** `:user-invalid` recolours the border to Fail Red. There is no shake, no icon, no red
-  background; the border colour is the whole message.
+- **Error:** validation belongs to the app, not the browser — the form carries `noValidate`, so a
+  failing field gets a Fail Red border *and* a monospace 0.6875rem sentence beneath it, joined by
+  `aria-describedby` with `aria-invalid="true"` on the control. No shake, no icon, no red background,
+  but colour is never the whole message.
+- **Hint:** the same line in faint ink, where a rule is worth stating before it is broken (the phone's
+  nine digits). A hint gives up its place to the error while one is showing.
+- **Form status:** one reserved line above the submit button, `role="status"`, present from page load so
+  assistive tech announces the change rather than a re-render. Pass Green on success, Fail Red on
+  failure, and the button carries the in-flight state itself: `Sending…` in place, disabled, no shift.
 - **Labels:** always the eyebrow treatment, monospace uppercase, sat above the field with 4px.
 
 ### Navigation

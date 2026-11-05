@@ -386,8 +386,46 @@
     box-shadow: 0 0 0 3px var(--surface-pressed);
   }
 
-  .field:user-invalid {
+  /* Validation is ours, not the browser's, so the field carries its own
+     sentence: faint for the hint, Fail Red for the correction. The border
+     colour changes with it, but colour alone is never the message. */
+  .field-hint,
+  .field-error,
+  .form-status {
+    display: block;
+    margin-block-start: var(--space-2xs);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+  }
+
+  .field-hint {
+    color: var(--ink-faint);
+  }
+
+  .field-error {
+    color: var(--danger);
+  }
+
+  .field[aria-invalid='true'] {
     border-color: var(--danger);
+  }
+
+  /* The status line exists before it has anything to say: live regions that
+     are injected mid-flow are not announced reliably. The reserved line is
+     also what keeps the submit button from jumping when it fills. */
+  .form-status {
+    margin-block-start: var(--space-sm);
+    min-block-size: 1.65em;
+    color: var(--ink-muted);
+  }
+
+  .form-status[data-status='sent'] {
+    color: var(--accent);
+  }
+
+  .form-status[data-status='failed'] {
+    color: var(--danger);
   }
 
   /* ---- carousel ------------------------------------------------------- */
