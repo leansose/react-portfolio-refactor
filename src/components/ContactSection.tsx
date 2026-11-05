@@ -3,7 +3,7 @@ import { CONTACT_FIELDS, CONTACT_FORM } from '../data/contact';
 
 function ContactSection() {
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="section">
+    <section id="contact" aria-labelledby="contact-heading" className="section" tabIndex={-1}>
       <div className="section-head">
         <h2 id="contact-heading" className="section-title">
           Get in Touch

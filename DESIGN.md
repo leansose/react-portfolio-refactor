@@ -290,9 +290,11 @@ non-text contrast the field boundary needs.
   softened ink and fills with the 6% surface wash. Same 44px target.
 - **Icon:** 44×44 pill on the 6% surface wash, no label; hover deepens the wash to 11%, active
   translates 1px. Used for compact glyph targets.
-- **Chip:** the theme switcher's three-way control. 34px tall, 8px inline padding, monospace 0.6875rem
-  in softened ink on a transparent fill. Pressed state (`aria-pressed='true'`) takes the Pass Green
-  fill. Chips are the documented exception to the 44px rule and stay above the 24px AA floor.
+- **Chip:** the theme switcher's three-way control. 34px tall on a fine pointer, 8px inline padding,
+  monospace 0.6875rem in softened ink on a transparent fill. Pressed state (`aria-pressed='true'`) takes
+  the Pass Green fill. Chips are the documented exception to the 44px rule and stay above the 24px AA
+  floor — but only where the pointer is precise: under `pointer: coarse` they return to 44px, because a
+  34px target between 8px gaps is a mis-tap rather than a style choice.
 - **Disabled:** 40% opacity, `not-allowed` cursor, and no press transform.
 - **Character:** tactile instrumentation. Every label reads like a status line.
 
@@ -328,6 +330,12 @@ non-text contrast the field boundary needs.
   active-tab indicator — colour alone marks the interaction, and the anchor target is the feedback.
 - **Anchors:** `scroll-padding-block-start` tracks `--nav-offset`, so a link lands below the bar, and
   smooth scrolling runs only under `prefers-reduced-motion: no-preference`.
+- **Skip link:** the first tab stop. A 44px Pass Green pill held at `opacity: 0` and revealed on focus
+  (never clipped, so its ring is never cropped), fixed to the container gutter and `--nav-offset + 16px`
+  from the top so it clears the sticky bar. It targets `<main id="main">`.
+- **Anchor focus:** every anchor target carries `tabindex="-1"` so Tab continues from the destination
+  rather than from the top of the page. Those containers take no focus ring: they are never Tab stops,
+  so 2.4.7 asks nothing of them, and a ring around an 8500px `<main>` would box the entire page.
 
 ### Accordion Row (signature component)
 The system's core interaction and the reason the page can stay short. A native
@@ -368,7 +376,8 @@ is a 1px translate, not a scale. There is exactly one entrance animation per reg
   for labels. Adding a fourth face, or loading a face from a CDN, is out of system.
 - **Do** set Display and Headline in uppercase and Title/Body in sentence case.
 - **Do** hold prose to the 68ch measure and the form to its 560px measure.
-- **Do** give every pressable control a 44px target, except chips, which stay above the 24px floor.
+- **Do** give every pressable control a 44px target, except theme chips on a fine pointer, which stay
+  above the 24px floor and return to 44px on touch.
 - **Do** mark depth with a 1px hairline or a tonal surface step; a 2px accent spine marks disclosure.
 - **Do** reuse the accordion row for any list of evidence — it is the pattern recruiters already read.
 - **Do** use the `+` → 45° rotation as the only disclosure affordance, and `tabular-nums` on any

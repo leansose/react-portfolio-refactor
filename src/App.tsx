@@ -14,9 +14,12 @@ import Footer from './components/Footer';
 function App() {
   return (
     <>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <Navbar />
-      <Hero />
-      <main>
+      <main id="main" tabIndex={-1}>
+        <Hero />
         <AboutSection />
         <SkillsSection />
         <ProjectsSection />

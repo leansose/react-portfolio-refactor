@@ -2,7 +2,7 @@ import { ABOUT_PARAGRAPHS } from '../data/aboutContent';
 
 function AboutSection() {
   return (
-    <section id="about" aria-labelledby="about-heading" className="section">
+    <section id="about" aria-labelledby="about-heading" className="section" tabIndex={-1}>
       <div className="section-head">
         <h2 id="about-heading" className="section-title">
           About Me

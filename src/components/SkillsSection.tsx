@@ -3,7 +3,7 @@ import { SKILL_GROUPS } from '../data/skills';
 
 function SkillsSection() {
   return (
-    <section id="skills" aria-labelledby="skills-heading" className="section">
+    <section id="skills" aria-labelledby="skills-heading" className="section" tabIndex={-1}>
       <div className="section-head">
         <p className="eyebrow">WHAT I WORK WITH</p>
         <h2 id="skills-heading" className="section-title">

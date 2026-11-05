@@ -3,7 +3,7 @@ import { WORK_EXPERIENCE } from '../data/workExperience';
 
 function ExperienceSection() {
   return (
-    <section id="timeline" aria-labelledby="experience-heading" className="section">
+    <section id="timeline" aria-labelledby="experience-heading" className="section" tabIndex={-1}>
       <div className="section-head">
         <h2 id="experience-heading" className="section-title">
           Work Experience

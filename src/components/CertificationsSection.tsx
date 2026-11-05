@@ -3,7 +3,7 @@ import { CERTIFICATION_GROUPS } from '../data/certifications';
 
 function CertificationsSection() {
   return (
-    <section id="certifications" aria-labelledby="certifications-heading" className="section">
+    <section id="certifications" aria-labelledby="certifications-heading" className="section" tabIndex={-1}>
       <div className="section-head">
         <h2 id="certifications-heading" className="section-title">
           Certifications &amp; Training

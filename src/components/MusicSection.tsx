@@ -4,7 +4,7 @@ import { BAND_PHOTOS, MUSIC_DESCRIPTION, MUSIC_LINKS } from '../data/music';
 
 function MusicSection() {
   return (
-    <section id="music" aria-labelledby="music-heading" className="section">
+    <section id="music" aria-labelledby="music-heading" className="section" tabIndex={-1}>
       <div className="section-head">
         <h2 id="music-heading" className="section-title">
           Music

@@ -146,6 +146,14 @@
     color: var(--on-accent);
   }
 
+  /* On touch a 34px chip is a mis-tap risk, not a style choice; the compact
+     chip stays a fine-pointer convention only. */
+  @media (pointer: coarse) {
+    .btn-chip {
+      min-block-size: 44px;
+    }
+  }
+
   /* ---- navigation links ----------------------------------------------- */
 
   /* The bar is sticky only from md up, where it is one line tall; on mobile
@@ -176,6 +184,49 @@
 
   .nav-link:hover {
     color: var(--accent);
+  }
+
+  /* ---- skip link -------------------------------------------------------
+     The nav bar is eight links before any content, so keyboard users need a
+     way past it. Hidden with opacity rather than clipped off-screen, so the
+     focus ring is never cropped and nothing but opacity ever animates. */
+
+  .skip-link {
+    position: fixed;
+    inset-block-start: calc(var(--nav-offset) + var(--space-sm));
+    inset-inline-start: var(--gutter);
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 44px;
+    padding-inline: var(--space-sm);
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    background-color: var(--accent);
+    color: var(--on-accent);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+
+  .skip-link:focus {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Anchor targets carry tabindex="-1" so Tab continues from the destination.
+     That focus is never a Tab stop, so WCAG 2.4.7 asks no ring of it, and on a
+     full-height <main> the global one would box the whole page. */
+  main[tabindex='-1']:focus,
+  section[tabindex='-1']:focus {
+    outline: none;
   }
 
   /* ---- icon links -----------------------------------------------------

@@ -3,7 +3,7 @@ import { PROJECTS } from '../data/projects';
 
 function ProjectsSection() {
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="section">
+    <section id="projects" aria-labelledby="projects-heading" className="section" tabIndex={-1}>
       <div className="section-head">
         <h2 id="projects-heading" className="section-title">
           Projects

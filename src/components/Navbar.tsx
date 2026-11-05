@@ -4,7 +4,7 @@ import { PROFILE } from '../data/profile';
 
 function Navbar() {
   return (
-    <div className="nav-bar">
+    <header className="nav-bar">
       <nav aria-label="Main" className="shell flex flex-wrap items-center gap-x-6 gap-y-3 py-4">
         <p className="mr-auto font-mono text-sm uppercase tracking-[0.08em] text-ink">
           <span className="text-accent">&lt;qa&gt;</span> {PROFILE.logoName}{' '}
@@ -21,7 +21,7 @@ function Navbar() {
         </ul>
         <ThemeToggle />
       </nav>
-    </div>
+    </header>
   );
 }
 
