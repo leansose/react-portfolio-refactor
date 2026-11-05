@@ -53,15 +53,7 @@ export const BAND_PHOTOS: BandPhoto[] = [
     533,
     `${publicUrl('band/1.jpg')} 800w`,
   ),
-  photo(
-    '2',
-    'amplifest',
-    '@ Amplifest 2015',
-    'Photo by Lais Pereira',
-    1280,
-    853,
-    `${publicUrl('band/2.jpg')} 1280w`,
-  ),
+  photo('2', 'amplifest', '@ Amplifest 2015', 'Photo by Lais Pereira', 1280, 853, `${publicUrl('band/2.jpg')} 1280w`),
   photo(
     '3',
     'amplifest',

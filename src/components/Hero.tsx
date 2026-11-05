@@ -5,7 +5,9 @@ function Hero() {
   return (
     <section id="top" aria-labelledby="hero-heading" className="section" tabIndex={-1}>
       <div className="section-head">
-        <h1 id="hero-heading" className="hero-title">{PROFILE.title}</h1>
+        <h1 id="hero-heading" className="hero-title">
+          {PROFILE.title}
+        </h1>
         <p className="lead measure">{PROFILE.tagline}</p>
       </div>
       <div className="section-body stack">

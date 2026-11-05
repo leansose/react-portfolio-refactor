@@ -71,14 +71,7 @@ function ContactSection() {
         <input type="hidden" name="access_key" value={CONTACT_FORM.accessKey} />
         <input type="hidden" name="subject" value={CONTACT_FORM.subject} />
         <input type="hidden" name="from_name" value={CONTACT_FORM.fromName} />
-        <input
-          type="checkbox"
-          name="botcheck"
-          className="hidden"
-          tabIndex={-1}
-          autoComplete="off"
-          aria-hidden="true"
-        />
+        <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
         <div className="stack">
           {CONTACT_FIELDS.map((field) => (

@@ -17,11 +17,7 @@ export const contactSchema = z.object({
   name: z.string().trim().min(2, 'Enter your name').max(30, 'Keep the name under 30 characters'),
   email: z.string().trim().email('Enter a valid email address'),
   phone,
-  message: z
-    .string()
-    .trim()
-    .min(1, 'Write a message')
-    .max(500, 'Keep the message under 500 characters'),
+  message: z.string().trim().min(1, 'Write a message').max(500, 'Keep the message under 500 characters'),
 });
 
 export type ContactValues = z.infer<typeof contactSchema>;
