@@ -178,6 +178,7 @@
     font-size: 0.6875rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    text-decoration-line: none;
     color: var(--ink-muted);
     transition: color var(--duration-fast) var(--ease-out);
   }
@@ -241,6 +242,7 @@
     block-size: 44px;
     margin-inline-start: -7px;
     border-radius: var(--radius-pill);
+    text-decoration-line: none;
     transition:
       background-color var(--duration-fast) var(--ease-out),
       transform var(--duration-fast) var(--ease-out);
@@ -266,6 +268,7 @@
     min-block-size: 44px;
     padding-inline: var(--space-xs);
     border-radius: var(--radius-md);
+    text-decoration-line: none;
     transition: background-color var(--duration-fast) var(--ease-out);
   }
 

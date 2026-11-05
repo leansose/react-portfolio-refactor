@@ -32,18 +32,20 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Colour alone never says "link" (WCAG 1.4.1), so an anchor arrives
+     underlined and hover only changes the tint. The hairline colour is too
+     faint to read as an edge on the dark theme, hence currentColor; controls
+     that draw their own boundaries opt out in components.css. */
   a {
     color: var(--accent);
-    text-decoration-line: none;
-    text-decoration-color: var(--rule);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: currentColor;
     text-underline-offset: 3px;
   }
 
   a:hover {
     color: var(--accent-hover);
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-decoration-color: currentColor;
   }
 
   :focus-visible {

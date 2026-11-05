@@ -327,6 +327,15 @@ non-text contrast the field boundary needs.
   failure, and the button carries the in-flight state itself: `Sending…` in place, disabled, no shift.
 - **Labels:** always the eyebrow treatment, monospace uppercase, sat above the field with 4px.
 
+### Links
+- **Resting state:** underlined — 1px, in the link's own colour, offset 3px. Colour alone never says
+  "link" (WCAG 1.4.1), and a hairline-coloured underline is too faint to read as an edge on the dark
+  theme, so the decoration takes `currentColor` rather than the rule.
+- **Hover:** only the tint moves, to Deep Pass Green; the underline stays where it was.
+- **Exceptions:** controls that draw their own boundaries opt out — buttons, chips, the skip link, the
+  nav bar, and the icon and logo links. Their shape, case or glyph already says what they are, and an
+  underline would fight the pill.
+
 ### Navigation
 - **Style:** a single bar in the page surface. Sticky with a bottom hairline from 768px up; static on
   mobile so wrapped links cannot eat the viewport.
