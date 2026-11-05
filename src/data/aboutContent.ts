@@ -3,15 +3,15 @@ import { normalizeText } from '../utils/text';
 /** Each inner array is one <p>; its entries mirror the original hard line breaks. */
 export const ABOUT_PARAGRAPHS: string[][] = [
   [
-    normalizeText(`Hi, I'm a Junior Software Tester with experience in manual testing and a deep curiosity in automation!
-      Currently I'm working as a freelancer in some crowd testing websites where I cover most of manual
+    normalizeText(`Hi, I'm a Junior Software Tester with experience in manual testing and a deep curiosity about automation!
+      Currently I'm working as a freelancer on some crowd-testing platforms where I cover most manual
       testing techniques and bug reporting.`),
   ],
   [
-    normalizeText(`I have also some personal projects documented on a portfolio using Playwright and Selenium. It's my
-      introduction into automation testing. That's one of my goals as a QA Tester, becoming a Test
+    normalizeText(`I also have some personal projects documented on a portfolio using Playwright and Selenium. It's my
+      introduction to automation testing. That's one of my goals as a QA Tester, becoming a Test
       Automation Engineer.`),
-    normalizeText(`I'm a focused, detail-oriented person looking forward to be a part of a development team to grow as
+    normalizeText(`I'm a focused, detail-oriented person looking forward to being part of a development team to grow as
       a tester while helping a company to deliver a better product.`),
   ],
   [

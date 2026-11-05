@@ -29,7 +29,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     role: 'Team Leader - Sales Team',
     company: 'NOS Comunicações SA',
     location: 'Porto, Campanhã - On-site/Remote',
-    period: 'Out 2016 - Apr 2019 | Sep 2020 - Jun 2021',
+    period: 'Oct 2016 - Apr 2019 | Sep 2020 - Jun 2021',
     datetime: '2016-10/2019-04, 2020-09/2021-06',
   },
   {

@@ -73,22 +73,22 @@ export const MUSIC_DESCRIPTION: Segment[][] = [
     seg('Óreida', true),
     seg(
       ` — and played
-      numerous live shows across the country, including the legendary music festival,
-      Amplifest on 2015 edition.`,
+      numerous live shows across the country, including the legendary music festival
+      Amplifest in its 2015 edition.`,
     ),
   ],
   [
     seg(
       `JUSEPH is currently on an unannounced hiatus, having played
-      their final show in 2020 during pandemic; it was a livestream act at the
+      their final show in 2020 during the pandemic; it was a livestream act at the
       now-defunct rock club Barracuda.`,
     ),
   ],
   [seg('Whether this ship will set sail on new sonic journeys remains uncertain, but we never know.')],
   [
     seg(
-      `Today I'm challenging myself to play exploratory music, since I'm very addicted to
-      electronic music, effects and syntherizers. I'm trying to find a balance between the two,
+      `Today I'm challenging myself to play exploratory music, since I'm deeply into
+      electronic music, effects and synthesizers. I'm trying to find a balance between the two,
       possibly a mix of both, my grounded area, post-rock, and ambient music, using an alter ego
       called,`,
     ),

@@ -71,7 +71,7 @@ export const SKILL_GROUPS: SkillGroup[] = [
       'Critical Thinking',
       'Empathy',
       'Self-awareness',
-      'Criativity',
+      'Creativity',
       'Resilience',
       'Continuous Learning',
     ],
