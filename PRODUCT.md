@@ -66,9 +66,15 @@ pricing, no account, and no content strategy.
 - **Static-only, published to GitHub Pages.** No backend, ever, unless the hosting decision changes.
   The contact form posts directly to `api.web3forms.com` with an access key stored in
   `src/data/contact.ts`. Server-side features are out of scope for this product.
-- **Open item, not decided:** no `base` path is set in `vite.config.ts` and there is no Pages
-  workflow or deploy config in the repo. The GitHub Pages target is confirmed; the mechanism to get
-  there is still undecided.
+- **Target URL: a domain root** (user site or custom domain), decided. The build nevertheless runs
+  with `base: './'` and resolves every `public/` path through `src/utils/url.ts`, so the same
+  artifact also serves from a project subpath without reconfiguring anything.
+- **Deploy is configured, not yet enabled.** `.github/workflows/deploy.yml` lints, typechecks, builds
+  and publishes `dist/` on every push to `main`. Pages still has to be switched to **GitHub Actions**
+  as its source in the repository settings — a dashboard step this repo cannot do for itself.
+- **The repository is public.** The Web3Forms access key ships inside the bundle and is readable by
+  anyone; that is normal for a client-side form, and it is also why the endpoint accepts unsolicited
+  submissions. No honeypot field exists yet.
 - **Language:** English only. Adding a language switcher or Portuguese UI copy is out of scope by
   decision, not by omission.
 - **Typography is locally hosted** (`public/fonts`: Josefin Sans, Inter). No external font CDN.
