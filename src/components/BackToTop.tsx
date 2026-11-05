@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { publicUrl } from '../utils/url';
 
 const SCROLL_THRESHOLD = 300;
 
@@ -21,7 +22,7 @@ function BackToTop() {
         visible ? 'opacity-100' : 'pointer-events-none opacity-0'
       }`}
     >
-      <img src="/icons/totop.webp" alt="" width={40} height={40} className="size-full object-contain" />
+      <img src={publicUrl('icons/totop.webp')} alt="" width={40} height={40} className="size-full object-contain" />
     </a>
   );
 }

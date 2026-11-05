@@ -1,3 +1,5 @@
+import { publicUrl } from '../utils/url';
+
 export interface Segment {
   text: string;
   em?: boolean;
@@ -32,8 +34,8 @@ const photo = (
   height: number,
   large: string,
 ): BandPhoto => ({
-  src: `/band/${file}-640.jpg`,
-  srcSet: `/band/${file}-640.jpg 640w, ${large}`,
+  src: publicUrl(`band/${file}-640.jpg`),
+  srcSet: `${publicUrl(`band/${file}-640.jpg`)} 640w, ${large}`,
   alt,
   venue,
   photographer,
@@ -49,12 +51,44 @@ export const BAND_PHOTOS: BandPhoto[] = [
     'Photo by Maria do Carmo Louceiro',
     800,
     533,
-    '/band/1.jpg 800w',
+    `${publicUrl('band/1.jpg')} 800w`,
   ),
-  photo('2', 'amplifest', '@ Amplifest 2015', 'Photo by Lais Pereira', 1280, 853, '/band/2.jpg 1280w'),
-  photo('3', 'amplifest', '@ Amplifest 2015', 'Photo by Lais Pereira', 2048, 1356, '/band/3-1600.jpg 1600w'),
-  photo('4', 'barracuda', '@ Barracuda 2020', 'Photo by Pedro Sousa', 5184, 3456, '/band/4-1600.jpg 1600w'),
-  photo('5', 'ferro bar', '@ Ferro Bar 2019', 'Photo by David Madeira', 5251, 3501, '/band/5-1600.jpg 1600w'),
+  photo(
+    '2',
+    'amplifest',
+    '@ Amplifest 2015',
+    'Photo by Lais Pereira',
+    1280,
+    853,
+    `${publicUrl('band/2.jpg')} 1280w`,
+  ),
+  photo(
+    '3',
+    'amplifest',
+    '@ Amplifest 2015',
+    'Photo by Lais Pereira',
+    2048,
+    1356,
+    `${publicUrl('band/3-1600.jpg')} 1600w`,
+  ),
+  photo(
+    '4',
+    'barracuda',
+    '@ Barracuda 2020',
+    'Photo by Pedro Sousa',
+    5184,
+    3456,
+    `${publicUrl('band/4-1600.jpg')} 1600w`,
+  ),
+  photo(
+    '5',
+    'ferro bar',
+    '@ Ferro Bar 2019',
+    'Photo by David Madeira',
+    5251,
+    3501,
+    `${publicUrl('band/5-1600.jpg')} 1600w`,
+  ),
 ];
 
 const seg = (text: string, em?: boolean): Segment => ({ text, em });
@@ -100,7 +134,7 @@ export const MUSIC_DESCRIPTION: Segment[][] = [
 export const MUSIC_LINKS: MusicLink[] = [
   {
     href: 'https://jusephband.bandcamp.com/',
-    icon: '/icons/bandcamp-logo.png',
+    icon: publicUrl('icons/bandcamp-logo.png'),
     alt: 'bandcamp',
     intrinsicWidth: 1770,
     intrinsicHeight: 512,
@@ -109,7 +143,7 @@ export const MUSIC_LINKS: MusicLink[] = [
   },
   {
     href: 'https://open.spotify.com/artist/7vQVtlsTukTFCInKzmi1zd?si=b15KyNgKT4CwuLTGu_UI6g',
-    icon: '/icons/spotify-logo.png',
+    icon: publicUrl('icons/spotify-logo.png'),
     alt: 'spotify',
     intrinsicWidth: 3432,
     intrinsicHeight: 940,
@@ -118,7 +152,7 @@ export const MUSIC_LINKS: MusicLink[] = [
   },
   {
     href: 'https://www.instagram.com/jusephband/',
-    icon: '/icons/ig-icon.png',
+    icon: publicUrl('icons/ig-icon.png'),
     alt: 'instagram',
     intrinsicWidth: 100,
     intrinsicHeight: 100,
