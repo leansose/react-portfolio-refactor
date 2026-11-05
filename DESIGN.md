@@ -230,9 +230,12 @@ One column, one page, one measure. Everything sits inside a centred container of
 classes, so the gutter grows with the viewport up to 48px and the content never runs edge-to-edge.
 
 Sections are stacked, separated by vertical rhythm rather than by boxes: block padding of
-`clamp(64px, 12vh, 120px)` means the page opens generously on a tall desktop and tightens itself on
-a short laptop without a breakpoint. The footer uses its own `clamp(48px, 8vh, 80px)` and a top
-hairline. Between a section head and its body sits `--space-stack` (`clamp(32px, 6vh, 48px)`).
+`clamp(64px, 6vw + 24px, 120px)` means the gap grows with the measure it is framing — 64px on a
+phone, 110px on a wide desktop — and no breakpoint is involved. The footer uses its own
+`clamp(48px, 4vw + 24px, 80px)` and a top hairline. Between a section head and its body sits
+`--space-stack` (`clamp(32px, 2vw + 24px, 48px)`). Height never enters the arithmetic: a tall window
+is not a wider column, and a rhythm that reads `vh` rewards the phone with the largest gaps on the
+page.
 
 The section anatomy is fixed and reusable: `.section-head` holds eyebrow → title → lead with 16px
 between siblings and only 4px between an eyebrow and what it labels, then `.section-body` follows.

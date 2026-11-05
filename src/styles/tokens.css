@@ -27,10 +27,12 @@
   --container: min(1200px, 100% - 2 * clamp(16px, 5vw, 48px));
 
   --gutter: clamp(16px, 5vw, 48px);
-  --section-pad-block: clamp(64px, 12vh, 120px);
+  /* Rhythm follows the measure, never the window height: a tall phone is a
+     narrow column and gains nothing from a taller gap. */
+  --section-pad-block: clamp(64px, 6vw + 24px, 120px);
   --nav-offset: 0px;
-  --footer-pad-block: clamp(48px, 8vh, 80px);
-  --space-stack: clamp(32px, 6vh, 48px);
+  --footer-pad-block: clamp(48px, 4vw + 24px, 80px);
+  --space-stack: clamp(32px, 2vw + 24px, 48px);
   --measure-form: 560px;
 
   --radius-sm: 3px;
