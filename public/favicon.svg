@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .mark {
+      fill: none;
+      stroke: #177f4b;
+      stroke-width: 3.2;
+      stroke-linejoin: miter;
+    }
+    @media (prefers-color-scheme: dark) {
+      .mark {
+        stroke: #9ee8be;
+      }
+    }
+  </style>
+  <g class="mark">
+    <path d="M13 7 5 16l8 9" />
+    <path d="M19 7l8 9-8 9" />
+  </g>
+</svg>
