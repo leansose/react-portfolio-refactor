@@ -320,8 +320,12 @@ non-text contrast the field boundary needs.
   failing field gets a Fail Red border *and* a monospace 0.6875rem sentence beneath it, joined by
   `aria-describedby` with `aria-invalid="true"` on the control. No shake, no icon, no red background,
   but colour is never the whole message.
-- **Hint:** the same line in faint ink, where a rule is worth stating before it is broken (the phone's
-  nine digits). A hint gives up its place to the error while one is showing.
+- **Hint:** the same line in faint ink, where a rule is worth stating before it is broken (the phone
+  explains itself with an example, not a digit count). A hint gives up its place to the error while one
+  is showing.
+- **Optional fields:** the only optional one says so in its label, `Phone (optional)`, and its hint
+  states the tolerance rather than a digit count: separators are stripped before the number is judged,
+  so spacing, brackets and a country code all read fine.
 - **Form status:** one reserved line above the submit button, `role="status"`, present from page load so
   assistive tech announces the change rather than a re-render. Pass Green on success, Fail Red on
   failure, and the button carries the in-flight state itself: `Sending…` in place, disabled, no shift.

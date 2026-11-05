@@ -1,9 +1,22 @@
 import { z } from 'zod';
 
+/* Typed separators are noise, not information, so the rule reads the number
+   the visitor meant: strip them, fold the old 00 prefix into a plus, then ask
+   for E.164 without pinning it to one country. What gets posted stays exactly
+   what was typed — this only decides whether the number is plausible. */
+const phone = z
+  .string()
+  .trim()
+  .transform((raw) => raw.replace(/[\s().-]/g, '').replace(/^00/, '+'))
+  .refine(
+    (value) => value === '' || /^\+?[1-9]\d{6,14}$/.test(value),
+    'Enter a reachable number, e.g. +351 912 345 678',
+  );
+
 export const contactSchema = z.object({
   name: z.string().trim().min(2, 'Enter your name').max(30, 'Keep the name under 30 characters'),
   email: z.string().trim().email('Enter a valid email address'),
-  phone: z.string().trim().regex(/^[0-9]{9}$/, 'Enter the 9 digits, no spaces or country code'),
+  phone,
   message: z
     .string()
     .trim()
@@ -48,13 +61,13 @@ export const CONTACT_FIELDS: ContactField[] = [
     placeholder: 'Your email',
   },
   {
-    label: 'Phone',
+    label: 'Phone (optional)',
     name: 'phone',
     type: 'tel',
     autocomplete: 'tel',
-    placeholder: 'e.g. 9123456789',
-    hint: 'Nine digits, no spaces or country code.',
-    maxLength: 9,
+    placeholder: 'e.g. +351 912 345 678',
+    hint: 'Spaces, brackets and a country code all read fine.',
+    maxLength: 20,
   },
   {
     label: 'Message',
