@@ -10,7 +10,7 @@ function AboutSection() {
       </div>
       <div className="section-body stack">
         {ABOUT_PARAGRAPHS.map((lines, index) => (
-          <p key={index} className="prose measure">
+          <p key={index} className="prose measure justified">
             {lines.map((line, lineIndex) => (
               <span key={lineIndex}>
                 {lineIndex > 0 && <br />}

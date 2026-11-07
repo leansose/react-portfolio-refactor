@@ -46,18 +46,18 @@ function BandCarousel({ photos }: BandCarouselProps) {
 
   return (
     <div>
-      <figure>
+      <figure className="media-col">
         <div className="media-frame">
           <img
             key={photo.src}
             src={photo.src}
             srcSet={photo.srcSet}
-            sizes="(min-width: 1024px) 1024px, 100vw"
+            sizes="(min-width: 760px) 760px, calc(100vw - 2 * clamp(16px, 5vw, 48px))"
             decoding="async"
             alt={photo.alt}
             width={photo.width}
             height={photo.height}
-            className="mx-auto w-full max-w-[1024px] object-cover"
+            className="w-full object-cover"
           />
         </div>
 
@@ -70,7 +70,7 @@ function BandCarousel({ photos }: BandCarouselProps) {
         </figcaption>
       </figure>
 
-      <div className="mt-4 flex items-center gap-2">
+      <div className="mt-4 flex items-center justify-center gap-2">
         <button
           type="button"
           aria-label="Previous slide"

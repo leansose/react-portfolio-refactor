@@ -69,6 +69,15 @@ img {
   max-width: 68ch;
 }
 
+/* Justification only pays off when the words can break, so hyphenation comes
+   with it rather than leaving rivers behind. It depends on the lang attribute
+   on <html> for its dictionary, and the final line of each paragraph stays
+   ragged on its own — that is text-align's default, not an extra rule. */
+.justified {
+  text-align: justify;
+  hyphens: auto;
+}
+
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.8125rem;

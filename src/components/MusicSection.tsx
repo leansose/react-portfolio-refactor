@@ -20,7 +20,7 @@ function MusicSection() {
         <p className="eyebrow">ABOUT MY MUSIC EXPERIENCE</p>
         <div className="stack">
           {MUSIC_DESCRIPTION.map((segments, index) => (
-            <p key={index} className="prose measure">
+            <p key={index} className="prose measure justified">
               <RichText segments={segments} />
             </p>
           ))}

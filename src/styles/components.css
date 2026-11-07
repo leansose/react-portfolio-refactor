@@ -482,6 +482,17 @@
 
   /* ---- carousel ------------------------------------------------------- */
 
+  /* The exposed photo is its own centred column rather than the full section:
+     at 1104px of shell the image dominated the page and the frame — which
+     paints its own raised background — showed a band of it either side. The
+     caption rides along so both edges agree with the photo; the thumbs keep
+     the wider row. The sizes attribute on the img mirrors 760px. */
+  .media-col {
+    inline-size: 100%;
+    max-inline-size: 760px;
+    margin-inline: auto;
+  }
+
   .media-frame {
     overflow: hidden;
     border-radius: var(--radius-md);
@@ -505,7 +516,11 @@
   .carousel-rail {
     display: flex;
     gap: var(--space-xs);
-    flex: 1 1 auto;
+    /* Sized to its thumbs rather than stretched across the row: a stretched
+       rail parks them against its own left edge and floats the next arrow off
+       alone at the right. Shrinking stays enabled, so a row wider than the
+       page still scrolls instead of bursting out of it. */
+    flex: 0 1 auto;
     min-inline-size: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
