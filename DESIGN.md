@@ -11,6 +11,7 @@ colors:
   accent-deep: "#0f6a3d"
   on-accent: "#ffffff"
   rule: "#c6cbd1"
+  rule-control: "#868e97"
   danger: "#b3261e"
 typography:
   display:
@@ -161,8 +162,12 @@ value.
 - **Report Ink** (`ink`): headings, body text, button labels.
 - **Report Ink, Softened** (`ink-muted`): leads, secondary text, tags, chips, default navigation links.
 - **Report Ink, Faint** (`ink-faint`): eyebrows and numbering, placeholders, hover borders on inputs.
-- **Hairline Rule** (`rule`): 1px structural borders — section footer top edge, list separators, row
-  list edges, input borders, inactive carousel thumbnails.
+- **Hairline Rule** (`rule`): 1px structural borders between regions — section footer top edge, list
+  separators, row list edges.
+- **Control Boundary** (`rule-control`): the outline of a control the visitor has to find before
+  touching it — input fields and inactive carousel thumbnails. It clears 3:1 against both surfaces it
+  sits between, in both themes; `rule` measures 1.5:1, which is enough to separate two paragraphs and
+  not enough to say "this is a field".
 - **On Pass Green** (`on-accent`): text and glyph colour whenever Pass Green is the fill.
 - **Fail Red** (`danger`): reserved for one thing — an invalid form field border.
 
@@ -290,8 +295,8 @@ Silhouette is otherwise rectilinear and open. There is no card chrome: no card h
 border, or a container of its own. Content separates through rules and indentation. Two pieces of
 geometry break the grid deliberately, and they are the system's fingerprints — the 2px accent spine
 that hangs an expanded row body off its summary, and the `+` marker that rotates 45° to become `×`.
-Inputs and tags keep a visible 1px stroke (solid for fields, dashed for tags), which is also the
-non-text contrast the field boundary needs.
+Inputs and tags keep a visible 1px stroke (solid for fields, dashed for tags); the field's is the one
+stroke in the system tuned to the 3:1 non-text contrast a control boundary needs.
 
 ## Components
 
@@ -332,8 +337,10 @@ non-text contrast the field boundary needs.
 - **Internal padding:** row lists pad 16px vertically per item; dense sub-lists pad 8px.
 
 ### Inputs / Fields
-- **Style:** full-width, 1px solid hairline border, 3px corner, Sheet White fill, 10px × 12px padding,
-  ink text with faint-ink placeholders. Hover darkens the border to faint ink.
+- **Style:** full-width, 1px solid Control Boundary border, 3px corner, Sheet White fill, 10px × 12px
+  padding, ink text with faint-ink placeholders. This is the one border in the system that must clear
+  3:1 — WCAG 1.4.11 asks it of any boundary that identifies a control — so it takes `--rule-control`,
+  not the `--rule` used between regions. Hover darkens it to faint ink.
 - **Focus:** border becomes Pass Green and a 3px translucent halo appears (`--surface-pressed`) —
   the only place a shadow-like value is used.
 - **Error:** validation belongs to the app, not the browser — the form carries `noValidate`, so a
@@ -399,7 +406,7 @@ everything else that looks like an icon is a masked bitmap or a text glyph.
 
 ### Carousel
 A media frame at 6px radius on Sheet White, a scroll-snapping rail of thumbnails with hidden
-scrollbars, and hairline-bordered inactive thumbs at 55% opacity. The active thumb is full opacity
+scrollbars, and inactive thumbs at 55% opacity behind a Control Boundary border. The active thumb is full opacity
 with a 2px Pass Green border; focus offset is 4px. Slide changes remount by key and replay a
 35%→100% opacity fade over 280ms. Nothing auto-advances: the slide moves only when the visitor
 clicks an arrow, taps a thumbnail, or uses arrows/Home/End on the focused rail, and the caption
@@ -417,6 +424,11 @@ while hidden, so a floating control never traps a keyboard press it cannot see.
 `background-color`, `border-color`, `color`, `box-shadow`, `transform` — never `all`. Press feedback
 is a 1px translate, not a scale. There is exactly one entrance animation per region and one global
 `prefers-reduced-motion: reduce` guard that collapses durations to 0.01ms.
+
+State that only a pointer can cause is guarded the same way: every `:hover` rule in the system sits
+inside `@media (hover: hover)`, because on a touch screen `:hover` latches after the tap and reads as
+a selected state the visitor cannot leave. States the visitor actually set — `[open]`,
+`[aria-pressed]`, `:focus-visible`, the error border — stay outside the guard and reach every device.
 
 ## Do's and Don'ts
 
@@ -449,6 +461,8 @@ is a 1px translate, not a scale. There is exactly one entrance animation per reg
 - **Don't** animate an interactive state with keyframes; transitions retarget, keyframes do not.
 - **Don't** add motion that ignores `prefers-reduced-motion`, and don't rely on motion as the only
   feedback for a state change.
+- **Don't** write a `:hover` rule outside `@media (hover: hover)`, and don't move a real state into
+  that guard — on touch a latched hover looks like a selection the visitor cannot undo.
 - **Don't** wrap content in a bordered card when a hairline rule and indentation will do.
 - **Don't** put decorative brackets, badges, or icons in headings; the eyebrow already carries the
   classification.

@@ -114,20 +114,16 @@ Work has followed the review's batches, in the order it set them. Done, oldest f
 | 5 — craft | links underlined in their resting state (colour alone never said "link"), drawn italics for both families, section rhythm derived from width instead of window height, brand marks and the arrow following the theme |
 | 6 — fonts | twelve full-coverage TTFs replaced by four `latin` variable woff2 subsets — the same drawn italics on a continuous weight axis, ~79% fewer bytes on first paint, and a `preload` for the two faces above the fold |
 | 7 — marks | the two brand wordmarks cut from 3432px and 1770px PNGs to lossless webp at three times their display box (96 kB → 18 kB); the nine emoji replaced by Material marks — the eight skill-row ones follow the theme and the row's own hover state, the contact one takes the sentence's size and colour |
+| 8 — boundaries | inputs and carousel thumbs outlined with a new `--rule-control` token that clears 3:1 against both the field and the page in each theme (WCAG 1.4.11), while `--rule` keeps the decorative hairlines at their own weight; all thirteen `:hover` rules moved behind `@media (hover: hover)` so a tap no longer latches a state touch pointers cannot leave |
 
 Still open, in rough order of return:
 
 - **Band photo candidate.** Slide 1 tops out at 800w, so on a large viewport it is the one image
   that upscales instead of resolving.
-- **Hover on touch.** No `:hover` styling sits behind `@media (hover: hover)`, so taps latch a hover
-  state on touch pointers. (`@media (pointer: coarse)` is used for target sizes, but that is a
-  different query.)
 - **Theme switch smear.** Colour transitions are not suppressed during the theme swap, so every
   transition fires at once.
 - **Mobile navigation.** The navbar wraps its eight links into rows on narrow viewports instead of
   collapsing them, so the header grows tall before the content does.
-- **Field boundary contrast.** Inputs are outlined with `--rule`, which measures ~1.5:1 against the
-  light page surface — under the 3:1 WCAG 1.4.11 expects of a boundary that identifies a control.
 - **Licences.** The hosted fonts are OFL-licensed, but no licence file ships beside them in
   `public/fonts/`.
 
