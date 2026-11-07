@@ -168,8 +168,9 @@
 
   /* ---- navigation links ----------------------------------------------- */
 
-  /* The bar is sticky only from md up, where it is one line tall; on mobile
-     the wrapped links would otherwise pin a quarter of the viewport. */
+  /* The bar is sticky only from md up, where it is one line tall. On mobile it
+     stays static even after the links collapsed into a disclosure: two rows
+     pinned to the top of a phone is still a fifth of the viewport. */
   .nav-bar {
     background-color: var(--bg);
   }
@@ -198,6 +199,79 @@
   @media (hover: hover) {
     .nav-link:hover {
       color: var(--accent);
+    }
+  }
+
+  /* ---- mobile nav disclosure -------------------------------------------
+     Below 768px the eight links collapse into one Menu button whose panel
+     expands the static header in flow — the same reveal model as the .row
+     accordions, and no position, z-index or shadow, none of which this system
+     carries. The base rules are the desktop layout, so nothing has to be
+     undone above 768px; both `.nav-menu` rules sit after `.btn` in the file,
+     which is what lets them win the display argument inside one layer. */
+
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+
+  @media (max-width: 767.98px) {
+    .nav-menu {
+      display: inline-flex;
+      gap: var(--space-2xs);
+    }
+
+    .nav-menu-marker {
+      font-family: var(--font-mono);
+      color: var(--ink-faint);
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+
+    .nav-menu[aria-expanded='true'] .nav-menu-marker {
+      transform: rotate(45deg);
+    }
+
+    @media (hover: hover) {
+      .nav-menu:hover .nav-menu-label,
+      .nav-menu:hover .nav-menu-marker {
+        color: var(--accent);
+      }
+    }
+
+    /* Hidden by display, never by the hidden attribute: preflight gives that
+       one !important and it would take the desktop links down with it. The gap
+       goes to zero because the base rule's row gap would open a slot between
+       each hairline and the row it separates. */
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      flex-basis: 100%;
+      order: 1;
+      gap: 0;
+      margin-block-start: var(--space-xs);
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .nav-bar[data-menu-open='true'] .nav-links {
+      display: flex;
+    }
+
+    /* A full-width 44px row per destination, separated by the same hairline
+       the rest of the system uses — no pill and no accent fill. */
+    .nav-links > li {
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .nav-links .nav-link {
+      display: flex;
+      align-items: center;
+      min-block-size: 44px;
+      padding-block: 0;
     }
   }
 
