@@ -115,15 +115,13 @@ Work has followed the review's batches, in the order it set them. Done, oldest f
 | 6 — fonts | twelve full-coverage TTFs replaced by four `latin` variable woff2 subsets — the same drawn italics on a continuous weight axis, ~79% fewer bytes on first paint, and a `preload` for the two faces above the fold |
 | 7 — marks | the two brand wordmarks cut from 3432px and 1770px PNGs to lossless webp at three times their display box (96 kB → 18 kB); the nine emoji replaced by Material marks — the eight skill-row ones follow the theme and the row's own hover state, the contact one takes the sentence's size and colour |
 | 8 — boundaries | inputs and carousel thumbs outlined with a new `--rule-control` token that clears 3:1 against both the field and the page in each theme (WCAG 1.4.11), while `--rule` keeps the decorative hairlines at their own weight; all thirteen `:hover` rules moved behind `@media (hover: hover)` so a tap no longer latches a state touch pointers cannot leave |
+| 9 — prose and exposure | the About and Music narratives justified with hyphenation on, so both edges hold; the exposed band photo cut from 1024px to a centred 760px column with its caption, which stops the media frame from painting a band of raised ground either side; the thumbnail rail sized to its thumbs and centred with its arrows, which removes the gap that used to open between the last thumb and the next arrow on a wide viewport; a theme swap now suppresses every colour transition for one frame, so the page repaints into the new theme instead of smearing across it |
+| 10 — mobile navigation | below 768px the eight links collapse into a `Menu` disclosure instead of wrapping, so the header goes from 216px in five rows to 122px in two; the panel expands in flow — one 44px row per link, hairlines between them — and the theme chips stay outside it, so a change of theme never costs an extra tap. `Escape` closes and returns focus to the button, a tap outside closes, choosing a link closes, and crossing 768px with the panel open resets it to inline. Desktop is pixel-identical: the list's layout moved out of Tailwind utilities into a semantic `.nav-links`, because a rule in `@layer components` cannot override a utility on the same element |
 
 Still open, in rough order of return:
 
 - **Band photo candidate.** Slide 1 tops out at 800w, so on a large viewport it is the one image
   that upscales instead of resolving.
-- **Theme switch smear.** Colour transitions are not suppressed during the theme swap, so every
-  transition fires at once.
-- **Mobile navigation.** The navbar wraps its eight links into rows on narrow viewports instead of
-  collapsing them, so the header grows tall before the content does.
 - **Licences.** The hosted fonts are OFL-licensed, but no licence file ships beside them in
   `public/fonts/`.
 

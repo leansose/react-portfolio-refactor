@@ -217,7 +217,10 @@ line, used for eyebrows, buttons, tags, and navigation.
   titles inside a section — project, skill group, role.
 - **Lead** (400, 1.125rem, line-height 1.6, softened ink): the tagline under the hero title and other
   one-sentence summaries.
-- **Body** (400, 1.0625rem, line-height 1.65): prose. Measure capped at 68ch.
+- **Body** (400, 1.0625rem, line-height 1.65): prose. Measure capped at 68ch. The About and Music
+  narratives carry `.justified` on top — flush both edges with `hyphens: auto`, which needs the `lang`
+  attribute on `<html>` for its dictionary. Justification is a per-section choice, not a property of
+  Body: card prose elsewhere stays ragged-right.
 - **Label / Eyebrow** (400 mono, 0.8125rem, line-height 1.4, tracking 0.14em, uppercase, faint ink):
   section eyebrows, row numbering, dates, field labels.
 - **Meta** (400, 0.875rem, line-height 1.5, softened ink): small supporting text inside cards.
@@ -254,9 +257,10 @@ between siblings and only 4px between an eyebrow and what it labels, then `.sect
 Content lists use `.stack` (16px), dense row lists use `.sub-list` (8px vertical padding per item
 with a 1px top rule), and the form is capped at a 560px measure.
 
-Responsive change is behavioural, not decorative. Below 768px the navigation bar stops being sticky,
-because wrapped links would otherwise pin a quarter of the viewport, and `--nav-offset` drops from
-84px to 0 so anchors land correctly. Layout within a component uses flex-wrap rather than a grid of
+Responsive change is behavioural, not decorative. Below 768px the navigation bar stops being sticky and
+its eight links collapse into a `Menu` disclosure rather than wrapping — five wrapped rows pinned a
+quarter of the viewport to the top, two rows do not — and `--nav-offset` drops from 84px to 0 so
+anchors land correctly. Layout within a component uses flex-wrap rather than a grid of
 breakpoints, so rows reflow instead of collapsing. Spacing inside components uses Tailwind's
 utility scale (`gap-2`, `mt-4`) while section-level rhythm always comes from the token scale.
 
@@ -368,13 +372,18 @@ stroke in the system tuned to the 3:1 non-text contrast a control boundary needs
   underline would fight the pill.
 
 ### Navigation
-- **Style:** a single bar in the page surface. Sticky with a bottom hairline from 768px up; static on
-  mobile so wrapped links cannot eat the viewport.
+- **Style:** a single bar in the page surface. From 768px the eight links sit inline on one line, the
+  bar is sticky and a bottom hairline separates it from the page. Below 768px the bar stays static and
+  holds two rows — the wordmark and a `Menu` button, then the three theme chips — with the eight links
+  expanding out of that button in flow, one 44px row each, separated by `--rule` hairlines.
 - **Typography:** the wordmark is monospace 0.875rem uppercase in ink, wrapped in Pass Green `<qa>`
   and `</qa>` brackets — the identity's only code-flavoured gesture, and it stays a label, not a
   decoration. Links are monospace 0.6875rem uppercase with 0.08em tracking in softened ink.
 - **States:** hover recolours the link to Pass Green over 150ms. There is no underline, no pill, no
-  active-tab indicator — colour alone marks the interaction, and the anchor target is the feedback.
+  active-tab indicator — colour alone marks the interaction, and the anchor target is the feedback. In
+  the panel a link is marked by that same hover colour, by its 44px row and by the hairline grid around
+  it; never by a pill or an accent fill. The chips stay outside the panel, so switching theme never
+  costs a tap.
 - **Anchors:** `scroll-padding-block-start` tracks `--nav-offset`, so a link lands below the bar, and
   smooth scrolling runs only under `prefers-reduced-motion: no-preference`.
 - **Skip link:** the first tab stop. A 44px Pass Green pill held at `opacity: 0` and revealed on focus
@@ -405,8 +414,13 @@ of labelling one. Nine Material marks ship in total, eight in accordion rows and
 everything else that looks like an icon is a masked bitmap or a text glyph.
 
 ### Carousel
-A media frame at 6px radius on Sheet White, a scroll-snapping rail of thumbnails with hidden
-scrollbars, and inactive thumbs at 55% opacity behind a Control Boundary border. The active thumb is full opacity
+The exposed photo is a centred column capped at 760px, not the full container: at 1104px of shell a
+wider image dominated the section, and the frame — which paints its own Sheet White ground — showed
+a band of it either side. The caption rides the same column so its edges agree with the photo's.
+Below that, a scroll-snapping rail of thumbnails with hidden scrollbars sizes to its own content and
+is centred as a group with the two arrows, so the arrows always hug the thumbs; it shrinks and
+scrolls once it is wider than the page. Inactive thumbs sit at 55% opacity behind a Control Boundary
+border. The active thumb is full opacity
 with a 2px Pass Green border; focus offset is 4px. Slide changes remount by key and replay a
 35%→100% opacity fade over 280ms. Nothing auto-advances: the slide moves only when the visitor
 clicks an arrow, taps a thumbnail, or uses arrows/Home/End on the focused rail, and the caption
@@ -443,11 +457,11 @@ a selected state the visitor cannot leave. States the visitor actually set — `
   above the 24px floor and return to 44px on touch.
 - **Do** mark depth with a 1px hairline or a tonal surface step; a 2px accent spine marks disclosure.
 - **Do** reuse the accordion row for any list of evidence — it is the pattern recruiters already read.
-- **Do** use the `+` → 45° rotation as the only disclosure affordance, and `tabular-nums` on any
-  number that stands in a column.
+- **Do** use the `+` → 45° rotation as the only disclosure affordance — the accordion rows and the
+  mobile `Menu` button share it — and `tabular-nums` on any number that stands in a column.
 - **Do** run state transitions at 150ms and reveals at 280ms on `--ease-out`, naming each property.
 - **Do** test any new screen in both themes and at a mobile width below 768px, where the navigation
-  stops being sticky.
+  stops being sticky and collapses to a `Menu` disclosure.
 
 ### Don't:
 - **Don't** turn this into the SaaS look: no glassmorphism, no backdrop blur, no elevated rounded
