@@ -19,8 +19,6 @@ export interface MusicLink {
   href: string;
   icon: string;
   alt: string;
-  intrinsicWidth: number;
-  intrinsicHeight: number;
   displayWidth: number;
   displayHeight: number;
 }
@@ -123,22 +121,21 @@ export const MUSIC_DESCRIPTION: Segment[][] = [
   ],
 ];
 
+/* Each mark is exported at three times its display box, so the widest common
+   device pixel ratio still resolves rather than upscales. Re-exporting at 1x
+   would leave the logos soft on a phone. */
 export const MUSIC_LINKS: MusicLink[] = [
   {
     href: 'https://jusephband.bandcamp.com/',
-    icon: publicUrl('icons/bandcamp-logo.png'),
+    icon: publicUrl('icons/bandcamp-logo.webp'),
     alt: 'bandcamp',
-    intrinsicWidth: 1770,
-    intrinsicHeight: 512,
     displayWidth: 200,
     displayHeight: 58,
   },
   {
     href: 'https://open.spotify.com/artist/7vQVtlsTukTFCInKzmi1zd?si=b15KyNgKT4CwuLTGu_UI6g',
-    icon: publicUrl('icons/spotify-logo.png'),
+    icon: publicUrl('icons/spotify-logo.webp'),
     alt: 'spotify',
-    intrinsicWidth: 3432,
-    intrinsicHeight: 940,
     displayWidth: 120,
     displayHeight: 33,
   },
@@ -146,8 +143,6 @@ export const MUSIC_LINKS: MusicLink[] = [
     href: 'https://www.instagram.com/jusephband/',
     icon: publicUrl('icons/ig-icon.png'),
     alt: 'instagram',
-    intrinsicWidth: 100,
-    intrinsicHeight: 100,
     displayWidth: 50,
     displayHeight: 50,
   },
