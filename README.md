@@ -15,6 +15,7 @@ built with. Both are maintained documents — read them before changing anything
 | --- | --- |
 | Build | Vite 8 (rolldown) + `@vitejs/plugin-react` with the React Compiler enabled via Babel |
 | UI | React 19, TypeScript, Tailwind 4 (`@tailwindcss/vite`) |
+| Icons | Material Symbols through `@mui/icons-material`, used for the nine marks that replaced the site's emoji — everything else is a masked bitmap or a text glyph |
 | Lint | oxlint (`.oxlintrc.json`) |
 | Format | Prettier, pinned exactly |
 | Form validation | zod + react-hook-form + `@hookform/resolvers` |
@@ -111,11 +112,11 @@ Work has followed the review's batches, in the order it set them. Done, oldest f
 | 3 — form and access | `autocomplete` purposes on the contact fields; phone made optional with E.164 normalisation; real validation, sending and outcome states with `aria-describedby` and a honeypot; hero moved inside `<main>` behind a skip link |
 | 4 — tooling | portable `base`, the Pages workflow, Prettier pinned, TypeScript `strict` + checked indexing, Prettier as an enforced gate, this README |
 | 5 — craft | links underlined in their resting state (colour alone never said "link"), drawn italics for both families, section rhythm derived from width instead of window height, brand marks and the arrow following the theme |
+| 6 — fonts | twelve full-coverage TTFs replaced by four `latin` variable woff2 subsets — the same drawn italics on a continuous weight axis, ~79% fewer bytes on first paint, and a `preload` for the two faces above the fold |
+| 7 — marks | the two brand wordmarks cut from 3432px and 1770px PNGs to lossless webp at three times their display box (96 kB → 18 kB); the nine emoji replaced by Material marks — the eight skill-row ones follow the theme and the row's own hover state, the contact one takes the sentence's size and colour |
 
 Still open, in rough order of return:
 
-- **Font payload.** Twelve full-coverage TTFs, ~2.4 MB in `public/fonts/`, with no `preload`, no
-  `unicode-range` and no subsetted `woff2` alternatives.
 - **Band photo candidate.** Slide 1 tops out at 800w, so on a large viewport it is the one image
   that upscales instead of resolving.
 - **Hover on touch.** No `:hover` styling sits behind `@media (hover: hover)`, so taps latch a hover

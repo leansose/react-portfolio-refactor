@@ -179,17 +179,24 @@ value.
 
 ## Typography
 
-**Display Font:** Josefin Sans (fallback `ui-sans-serif, system-ui, sans-serif`), self-hosted at
-400 / 600 / 700 from `public/fonts/`, each with a drawn italic companion.
-**Body Font:** Inter 24pt (fallback `ui-sans-serif, system-ui, sans-serif`), self-hosted at 400 /
-500 / 700, each with a drawn italic companion.
+**Display Font:** Josefin Sans (fallback `ui-sans-serif, system-ui, sans-serif`), self-hosted as one
+variable woff2 subset covering weights 100–700, plus its italic axis.
+**Body Font:** Inter (fallback `ui-sans-serif, system-ui, sans-serif`), self-hosted as one variable
+woff2 subset covering weights 100–900, plus its italic axis.
 **Label/Mono Font:** the platform monospace stack (`ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo,
 monospace`) — deliberately not a downloaded face; it is a utility voice.
 
+**Weight:** because each file carries the whole weight axis, a new `font-weight` in a component needs
+no new asset and is never synthesised — the axis is interpolated from real data. The static per-weight
+set this replaced shipped twelve files, of which the stylesheet could only reach five.
+
 **Italic:** `<em>` is the identity's only emphasis, used for album and band titles in the prose. The
-twelve faces are the same builds as their uprights — Inter 4.001, Josefin Sans 2.001 — so the slant
-is drawn, not sheared by the browser: real italics carry different advance widths and entry strokes,
-and a paragraph mixing upright and emphasis keeps its rhythm.
+italic axis is drawn, not sheared by the browser: real italics carry different advance widths and entry
+strokes, and a paragraph mixing upright and emphasis keeps its rhythm.
+
+**Subset:** `latin` only. The nine non-ASCII codepoints the site renders — the em dash, ellipsis,
+bullet, trademark sign and the accented letters of the name — all sit inside it. Nothing that needs a
+glyph is left to a fallback font.
 
 **Character:** Josefin Sans is a tall, narrow, geometric display face whose uppercase forms the
 headline as a printed classification rather than as expressive type. Inter carries everything meant
@@ -377,7 +384,18 @@ flex-wrapped baseline; a monospace `+` at the right. Hover fills the summary wit
 across a 6px radius and pulls the title to Pass Green — the whole row, not just the glyph, is the
 target. Opening rotates the marker 45° over 280ms and reveals the body under a 2px accent spine with
 a single 4px-travelling fade-in. Used identically for skills, projects, and certifications, which is
-what makes it read as a system rather than as styling.
+what makes it read as a system rather than as styling. Skills rows lead with a mark from the Material
+Symbols set — the system's only icon library, sized to 1.25em and held at faint ink so the title stays
+the loudest thing on the line; it takes Pass Green with the title on hover and open. Those marks
+replaced a set of emoji, which no two machines drew the same way and which a screen reader announced
+by Unicode name.
+
+### Inline Mark
+The one mark that sits inside running text: the last line of the contact lead, where a colour
+emoji used to wink. It takes the sentence's own size and colour — `fontSize="inherit"`, so the
+glyph is 1em of the 18px lead — rather than the row treatment, because it ends a sentence instead
+of labelling one. Nine Material marks ship in total, eight in accordion rows and this one here;
+everything else that looks like an icon is a masked bitmap or a text glyph.
 
 ### Carousel
 A media frame at 6px radius on Sheet White, a scroll-snapping rail of thumbnails with hidden
