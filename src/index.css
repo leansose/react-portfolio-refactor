@@ -50,6 +50,16 @@
     }
   }
 
+  /* A theme swap re-binds every colour token at once, so every colour
+     transition on the page fires in the same frame and the switch smears from
+     the top down. useTheme holds this attribute for exactly one frame. */
+  [data-theme-switching],
+  [data-theme-switching] *,
+  [data-theme-switching] *::before,
+  [data-theme-switching] *::after {
+    transition: none !important;
+  }
+
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;

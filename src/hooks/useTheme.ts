@@ -11,9 +11,22 @@ const systemPrefersDark = () => window.matchMedia(darkQuery).matches;
 const resolve = (preference: ThemePreference) =>
   preference === 'system' ? (systemPrefersDark() ? 'dark' : 'light') : preference;
 
+/* Repainting in the new theme without animating into it: the attribute kills
+   every transition, one forced style recalculation commits the new colours,
+   and the next frame hands the transitions back. */
+const swap = (theme: string, preference?: ThemePreference) => {
+  const root = document.documentElement;
+  root.dataset.themeSwitching = 'true';
+  root.dataset.theme = theme;
+  if (preference) root.dataset.themePreference = preference;
+  void getComputedStyle(root).backgroundColor;
+  requestAnimationFrame(() => {
+    delete root.dataset.themeSwitching;
+  });
+};
+
 const write = (preference: ThemePreference) => {
-  document.documentElement.dataset.theme = resolve(preference);
-  document.documentElement.dataset.themePreference = preference;
+  swap(resolve(preference), preference);
   try {
     localStorage.setItem(THEME_STORAGE_KEY, preference);
   } catch {
@@ -40,7 +53,7 @@ export function useTheme() {
 
     const media = window.matchMedia(darkQuery);
     const onChange = () => {
-      document.documentElement.dataset.theme = resolve('system');
+      swap(resolve('system'));
     };
     media.addEventListener('change', onChange);
     return () => media.removeEventListener('change', onChange);
