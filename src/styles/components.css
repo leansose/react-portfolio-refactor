@@ -80,8 +80,12 @@
     color: var(--on-accent);
   }
 
-  .btn-primary:hover {
-    background-color: var(--accent-hover);
+  /* Every hover state lives behind this guard: on a touch screen :hover
+     latches after a tap and reads as a stuck selected state. */
+  @media (hover: hover) {
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
   }
 
   .btn-primary:active {
@@ -93,9 +97,11 @@
     color: var(--ink);
   }
 
-  .btn-outline:hover {
-    border-color: var(--ink-muted);
-    background-color: var(--surface-hover);
+  @media (hover: hover) {
+    .btn-outline:hover {
+      border-color: var(--ink-muted);
+      background-color: var(--surface-hover);
+    }
   }
 
   .btn-icon {
@@ -109,8 +115,10 @@
     color: var(--ink);
   }
 
-  .btn-icon:hover:not(:disabled) {
-    background-color: var(--surface-pressed);
+  @media (hover: hover) {
+    .btn-icon:hover:not(:disabled) {
+      background-color: var(--surface-pressed);
+    }
   }
 
   .btn-icon:active:not(:disabled) {
@@ -131,9 +139,11 @@
     background-color: transparent;
   }
 
-  .btn-chip:hover {
-    background-color: var(--surface-hover);
-    color: var(--ink);
+  @media (hover: hover) {
+    .btn-chip:hover {
+      background-color: var(--surface-hover);
+      color: var(--ink);
+    }
   }
 
   .btn-chip[aria-pressed='true'] {
@@ -141,9 +151,11 @@
     color: var(--on-accent);
   }
 
-  .btn-chip[aria-pressed='true']:hover {
-    background-color: var(--accent-hover);
-    color: var(--on-accent);
+  @media (hover: hover) {
+    .btn-chip[aria-pressed='true']:hover {
+      background-color: var(--accent-hover);
+      color: var(--on-accent);
+    }
   }
 
   /* On touch a 34px chip is a mis-tap risk, not a style choice; the compact
@@ -183,8 +195,10 @@
     transition: color var(--duration-fast) var(--ease-out);
   }
 
-  .nav-link:hover {
-    color: var(--accent);
+  @media (hover: hover) {
+    .nav-link:hover {
+      color: var(--accent);
+    }
   }
 
   /* ---- skip link -------------------------------------------------------
@@ -262,8 +276,10 @@
       transform var(--duration-fast) var(--ease-out);
   }
 
-  .icon-link:hover {
-    background-color: var(--surface-hover);
+  @media (hover: hover) {
+    .icon-link:hover {
+      background-color: var(--surface-hover);
+    }
   }
 
   .icon-link:active {
@@ -286,8 +302,10 @@
     transition: background-color var(--duration-fast) var(--ease-out);
   }
 
-  .logo-link:hover {
-    background-color: var(--surface-hover);
+  @media (hover: hover) {
+    .logo-link:hover {
+      background-color: var(--surface-hover);
+    }
   }
 
   /* ---- accordion card rows -------------------------------------------- */
@@ -328,18 +346,22 @@
     color: var(--ink-faint);
   }
 
-  .row > summary:hover {
-    background-color: var(--surface-hover);
+  @media (hover: hover) {
+    .row > summary:hover {
+      background-color: var(--surface-hover);
+    }
+
+    .row > summary:hover .row-title,
+    .row > summary:hover .row-icon,
+    .row > summary:hover .row-marker {
+      color: var(--accent);
+    }
   }
 
-  .row > summary:hover .row-title,
-  .row > summary:hover .row-icon,
+  /* Open is a state the visitor set, not a pointer position, so it stays
+     outside the hover guard and reaches a touch screen the same way. */
   .row[open] > summary .row-title,
-  .row[open] > summary .row-icon {
-    color: var(--accent);
-  }
-
-  .row > summary:hover .row-marker,
+  .row[open] > summary .row-icon,
   .row[open] > summary .row-marker {
     color: var(--accent);
   }
@@ -392,7 +414,7 @@
   .field {
     inline-size: 100%;
     padding: 10px 12px;
-    border: 1px solid var(--rule);
+    border: 1px solid var(--rule-control);
     border-radius: var(--radius-sm);
     background-color: var(--bg-raised);
     color: var(--ink);
@@ -401,8 +423,10 @@
       box-shadow var(--duration-fast) var(--ease-out);
   }
 
-  .field:hover {
-    border-color: var(--ink-faint);
+  @media (hover: hover) {
+    .field:hover {
+      border-color: var(--ink-faint);
+    }
   }
 
   .field::placeholder {
@@ -501,7 +525,7 @@
   .thumb {
     display: block;
     overflow: hidden;
-    border: 2px solid var(--rule);
+    border: 2px solid var(--rule-control);
     border-radius: var(--radius-md);
     opacity: 0.55;
     cursor: pointer;
@@ -511,9 +535,11 @@
       box-shadow var(--duration-fast) var(--ease-out);
   }
 
-  .thumb:hover {
-    opacity: 0.85;
-    border-color: var(--ink-faint);
+  @media (hover: hover) {
+    .thumb:hover {
+      opacity: 0.85;
+      border-color: var(--ink-faint);
+    }
   }
 
   .thumb[data-active='true'] {

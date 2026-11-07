@@ -44,8 +44,10 @@
     text-underline-offset: 3px;
   }
 
-  a:hover {
-    color: var(--accent-hover);
+  @media (hover: hover) {
+    a:hover {
+      color: var(--accent-hover);
+    }
   }
 
   :focus-visible {

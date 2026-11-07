@@ -10,6 +10,10 @@
   --accent-hover: #0f6a3d;
   --on-accent: #ffffff;
   --rule: #c6cbd1;
+  /* --rule draws the hairlines that separate content, and 1.5:1 is enough for
+     those. A control's own boundary is different: WCAG 1.4.11 asks 3:1 so the
+     visitor can tell an input from the page before touching it. */
+  --rule-control: #868e97;
   --danger: #b3261e;
 
   --font-display: 'Josefin Sans', ui-sans-serif, system-ui, sans-serif;
@@ -60,6 +64,7 @@
   --accent-hover: #63c68f;
   --on-accent: #101215;
   --rule: rgba(255, 255, 255, 0.15);
+  --rule-control: rgba(255, 255, 255, 0.35);
   --danger: #ff809d;
 
   --surface-hover: rgba(255, 255, 255, 0.08);
