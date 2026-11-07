@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import SentimentSatisfiedAlt from '@mui/icons-material/SentimentSatisfiedAlt';
 import TextField from './TextField';
 import { CONTACT_FIELDS, CONTACT_FORM, contactSchema, type ContactValues } from '../data/contact';
 import { FOOTER_CONTACT_INFO } from '../data/profile';
@@ -56,7 +57,10 @@ function ContactSection() {
           Feel free to contact if you want to collaborate!
           <br />
           <br />
-          Let's talk about future projects and how we can work together 😉
+          Let's talk about future projects and how we can work together{' '}
+          {/* The emoji this replaces sat inside the sentence, so the mark takes the
+              text's own size and colour instead of getting a class of its own. */}
+          <SentimentSatisfiedAlt fontSize="inherit" />
           <br />
         </p>
       </div>

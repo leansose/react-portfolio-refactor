@@ -319,12 +319,23 @@
     display: none;
   }
 
+  /* The mark sits on the title's line rather than its baseline: an svg has no
+     text baseline, so baseline alignment would drop its bottom edge onto the
+     letters and leave it riding high against the caps. */
+  .row-icon {
+    flex-shrink: 0;
+    align-self: center;
+    color: var(--ink-faint);
+  }
+
   .row > summary:hover {
     background-color: var(--surface-hover);
   }
 
   .row > summary:hover .row-title,
-  .row[open] > summary .row-title {
+  .row > summary:hover .row-icon,
+  .row[open] > summary .row-title,
+  .row[open] > summary .row-icon {
     color: var(--accent);
   }
 
